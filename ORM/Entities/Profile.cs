@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ORM.Entities
 {
@@ -10,7 +7,6 @@ namespace ORM.Entities
     {
         public Profile()
         {
-            Files = new HashSet<File>();
             Messages = new HashSet<Message>();
             Friends = new HashSet<Profile>();
             InFriends = new HashSet<Profile>();
@@ -32,8 +28,6 @@ namespace ORM.Entities
 
         public virtual User User { get; set; }
 
-        public virtual ICollection<File> Files { get; set; }
-
         public virtual ICollection<Profile> Friends { get; set; }
 
         public virtual ICollection<Profile> InFriends { get; set; }
@@ -41,5 +35,7 @@ namespace ORM.Entities
         public virtual ICollection<Message> Messages { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
+
+        public virtual ICollection<File> Files { get; set; }
     }
 }

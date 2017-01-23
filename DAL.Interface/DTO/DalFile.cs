@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ORM.Entities
+namespace DAL.Interface.DTO
 {
-    public class File
+    public class DalFile:IEntity
     {
-        public File()
+        public DalFile()
         {
             Date = DateTime.Now;
         }
 
         public int Id { get; set; }
-
         public byte[] Data { get; set; }
-
         public string MimeType { get; set; }
-
         public string Name { get; set; }
-
         public DateTime Date { get; set; }
     }
 }

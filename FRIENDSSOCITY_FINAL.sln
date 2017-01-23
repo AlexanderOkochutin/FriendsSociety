@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICryptoService", "ICryptoSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoService", "CryptoService\CryptoService.csproj", "{23408DEC-F815-4226-AD41-442DA334A2F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL.Interface", "DAL.Interface\DAL.Interface.csproj", "{2F5F516F-808E-49AB-B7A3-518EE118AF3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{9BD642C7-50AF-4691-97A4-01D098E8D4C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{23408DEC-F815-4226-AD41-442DA334A2F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23408DEC-F815-4226-AD41-442DA334A2F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23408DEC-F815-4226-AD41-442DA334A2F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F5F516F-808E-49AB-B7A3-518EE118AF3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F5F516F-808E-49AB-B7A3-518EE118AF3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F5F516F-808E-49AB-B7A3-518EE118AF3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F5F516F-808E-49AB-B7A3-518EE118AF3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BD642C7-50AF-4691-97A4-01D098E8D4C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BD642C7-50AF-4691-97A4-01D098E8D4C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BD642C7-50AF-4691-97A4-01D098E8D4C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BD642C7-50AF-4691-97A4-01D098E8D4C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

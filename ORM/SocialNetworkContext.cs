@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using ICryptoService;
 using ORM.Entities;
 
@@ -26,7 +21,7 @@ namespace ORM
 
         public DbSet<File> Files { get; set; }
 
-        public DbSet<FriendInvite> Invites { get; set; }
+        public DbSet<Invite> Invites { get; set; }
 
         public DbSet<Post> Posts { get; set; }
 

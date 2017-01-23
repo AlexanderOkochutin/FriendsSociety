@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace ORM.Entities
 {
-    public class FriendInvite
+    public class Like
     {
         public int Id { get; set; }
-
         public virtual Profile ProfileFrom { get; set; }
-
-        public virtual Profile ProfielTo { get; set; }
-
-        public string Response { get; set; }
+        public virtual Post Post { get; set; }
     }
 }
