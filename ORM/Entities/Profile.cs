@@ -13,6 +13,7 @@ namespace ORM.Entities
             Files = new HashSet<File>();
             Messages = new HashSet<Message>();
             Friends = new HashSet<Profile>();
+            InFriends = new HashSet<Profile>();
         }
 
         public int Id { get; set; }
@@ -34,6 +35,8 @@ namespace ORM.Entities
         public virtual ICollection<File> Files { get; set; }
 
         public virtual ICollection<Profile> Friends { get; set; }
+
+        public virtual ICollection<Profile> InFriends { get; set; }
 
         public virtual ICollection<Message> Messages { get; set; }
 
