@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DAL.Interface.DTO;
 using ORM.Entities;
 
@@ -62,7 +59,14 @@ namespace DAL.Mappers
             {
                 result.PostsId.Add(post.Id);
             }
-            
+            foreach (var message in profile.Messages)
+            {
+                result.MessageId.Add(message.Id);
+            }
+            foreach (var post in profile.Posts)
+            {
+                result.PostsId.Add(post.Id);
+            }           
             return result;
         }
 

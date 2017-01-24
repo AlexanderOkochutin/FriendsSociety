@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using ICryptoService;
 using ORM.Entities;
+using ORM.Mappers;
 
 namespace ORM
 {
@@ -25,18 +26,13 @@ namespace ORM
 
         public DbSet<Post> Posts { get; set; }
 
+        public DbSet<Like> Likes { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Profile>().HasRequired(t => t.User).WithOptional(u => u.Profile);
-            modelBuilder.Entity<Profile>()
-                .HasMany(c => c.Friends)
-                .WithMany(p => p.InFriends)
-                .Map(m =>
-                {
-                    m.ToTable("Friends");
-                    m.MapLeftKey("UserId");
-                    m.MapRightKey("User2Id");
-                });
+            modelBuilder.Configurations.Add(new UserMapper());
+            modelBuilder.Configurations.Add(new ProfileMapper());
+            modelBuilder.Configurations.Add(new PostMapper());
         }
     }
 }

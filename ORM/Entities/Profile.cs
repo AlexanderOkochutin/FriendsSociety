@@ -10,6 +10,8 @@ namespace ORM.Entities
             Messages = new HashSet<Message>();
             Friends = new HashSet<Profile>();
             InFriends = new HashSet<Profile>();
+            Posts = new HashSet<Post>();
+            Files = new HashSet<File>();
         }
 
         public int Id { get; set; }

@@ -15,5 +15,7 @@ namespace DAL.Interface.DTO
         public string MimeType { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
+        public int ProfileId { get; set; }
+        public int PostId { get; set; }
     }
 }

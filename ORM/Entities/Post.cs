@@ -11,11 +11,12 @@ namespace ORM.Entities
             RepostProfiles = new HashSet<Profile>();
             Files = new HashSet<File>();
             Comments = new HashSet<Message>();
+            Likes = new HashSet<Like>();
         }
 
         public int Id { get; set; }
 
-        public virtual Profile AuthorProfile { get; set; }
+        public int AuthorId { get; set; }
 
         public virtual ICollection<Profile> RepostProfiles { get; set; }
 

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DAL.Interface.DTO;
 
 namespace DAL.Interface.Repository
 {
-    interface IMessageRepository:IRepository<DalMessage>
+    public interface IMessageRepository:IRepository<DalMessage>
     {
+        List<DalMessage> GetMessages(int profileIdFrom, int profileIdTo);
     }
 }

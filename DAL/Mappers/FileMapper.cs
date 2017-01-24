@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using DAL.Interface.DTO;
 using ORM.Entities;
@@ -9,8 +10,10 @@ namespace DAL.Mappers
     /// Service class for mapping DalUser and ORM User entities
     /// </summary>
     public static class FileMapper
-    {
-        /// <summary>
+
+{
+
+/// <summary>
         /// Map User
         /// </summary>
         /// <param name="user"></param>
@@ -44,7 +47,9 @@ namespace DAL.Mappers
                 Date = file.Date,
                 Data = file.Data,
                 MimeType = file.MimeType,
-                Name = file.Name
+                Name = file.Name,
+                ProfileId = file.Profile.Id,
+                PostId = file.Post.Id
             };
             return result;
         }

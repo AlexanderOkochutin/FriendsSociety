@@ -19,5 +19,9 @@ namespace ORM.Entities
         public string Name { get; set; }
 
         public DateTime Date { get; set; }
+
+        public virtual Profile Profile { get; set; }
+
+        public virtual Post Post { get; set; }
     }
 }

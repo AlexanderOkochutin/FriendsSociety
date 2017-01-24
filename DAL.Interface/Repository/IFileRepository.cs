@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Interface.DTO;
+﻿using DAL.Interface.DTO;
 
 namespace DAL.Interface.Repository
 {
-    interface IFileRepository:IRepository<DalFile>
+    public interface IFileRepository:IRepository<DalFile>
     {
     }
 }

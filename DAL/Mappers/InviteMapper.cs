@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DAL.Interface.DTO;
 using ORM.Entities;
 
@@ -27,8 +24,8 @@ namespace DAL.Mappers
             DalInvite dalInvite = new DalInvite()
             {
                 Id = invite.Id,
-                IdFrom = invite.ProfileFrom.Id,
-                IdTo = invite.ProfielTo.Id,
+                ProfileFrom = invite.ProfileFrom.Id,
+                ProfileTo = invite.ProfielTo.Id,
                 Response = invite.Response
             };
             return dalInvite;

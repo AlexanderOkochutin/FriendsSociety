@@ -27,5 +27,9 @@ namespace DAL.Interface.DTO
         public ICollection<int> Friends { get; set; }
 
         public ICollection<int> PostsId { get; set; }
+
+        public ICollection<int> FilesId { get; set; }
+
+        public ICollection<int> MessageId { get; set; }
     }
 }
