@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace DAL.Interface.DTO
+namespace BLL.Interface.Entities
 {
-    public class DalPost:IEntity
+    public class BllPost
     {
-        public DalPost()
+        public BllPost()
         {
             Date = DateTime.Now;
-            Likes = new HashSet<DalLike>();
+            Likes = new HashSet<BllLike>();
             RepostProfiles = new HashSet<int>();
             Files = new HashSet<int>();
             Comments = new HashSet<int>();
@@ -22,7 +25,7 @@ namespace DAL.Interface.DTO
 
         public DateTime Date { get; set; }
 
-        public ICollection<DalLike> Likes { get; set; }
+        public ICollection<BllLike> Likes { get; set; }
 
         public bool IsOnTheWall { get; set; }
 

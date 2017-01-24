@@ -8,6 +8,7 @@ namespace ORM.Entities
 
         public Post()
         {
+            Date = DateTime.Now;
             RepostProfiles = new HashSet<Profile>();
             Files = new HashSet<File>();
             Comments = new HashSet<Message>();

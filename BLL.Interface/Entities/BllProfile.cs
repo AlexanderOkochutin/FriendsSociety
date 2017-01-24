@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace DAL.Interface.DTO
+namespace BLL.Interface.Entities
 {
-    public class DalProfile : IEntity
+    public class BllProfile
     {
-        public DalProfile()
+        public BllProfile()
         {
             Friends = new HashSet<int>();
             PostsId = new HashSet<int>();
