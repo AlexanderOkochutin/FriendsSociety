@@ -55,6 +55,7 @@
     <Compile Include="Concrete\MessageRepository.cs" />
     <Compile Include="Concrete\PostRepository.cs" />
     <Compile Include="Concrete\ProfileRepository.cs" />
+    <Compile Include="Concrete\UnitOfWork.cs" />
     <Compile Include="Concrete\UserRepository.cs" />
     <Compile Include="Mappers\FileMapper.cs" />
     <Compile Include="Mappers\InviteMapper.cs" />

@@ -1,12 +1,16 @@
-﻿namespace DAL.Interface.Repository
+﻿using System;
+
+namespace DAL.Interface.Repository
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork:IDisposable
     {
         IUserRepository Users { get; set; }
         IProfileRepository Profiles { get; set; }
-        IFileRepository Photos { get; set; }
+        IFileRepository Files { get; set; }
         IMessageRepository Messages { get; set; }
         IInviteRepository Invites { get; set; }
+        IPostRepository Posts { get; set; }
+        ILikeRepository Likes { get; set; }
         void Commit();
     }
 }
