@@ -10,7 +10,7 @@ using ORM;
 
 namespace DAL.Concrete
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         public DbContext Context { get; private set; }
         public IUserRepository Users { get; set; }

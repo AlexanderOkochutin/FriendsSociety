@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL.Interface", "BLL.Interf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{5DAF1A62-B435-44FC-872F-1618F9B8FCC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyResolver", "DependencyResolver\DependencyResolver.csproj", "{D85BD8CE-3CFC-4020-975F-FA333EAFAE21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{5DAF1A62-B435-44FC-872F-1618F9B8FCC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DAF1A62-B435-44FC-872F-1618F9B8FCC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DAF1A62-B435-44FC-872F-1618F9B8FCC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D85BD8CE-3CFC-4020-975F-FA333EAFAE21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D85BD8CE-3CFC-4020-975F-FA333EAFAE21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D85BD8CE-3CFC-4020-975F-FA333EAFAE21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D85BD8CE-3CFC-4020-975F-FA333EAFAE21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
