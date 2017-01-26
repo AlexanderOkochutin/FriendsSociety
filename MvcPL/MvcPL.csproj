@@ -185,6 +185,8 @@
     <Content Include="Content\bootstrap_previous.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\BackGround.jpg" />
+    <Content Include="Content\Images\default-avatar.jpg" />
+    <Content Include="Content\Images\mail.png" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -266,6 +268,7 @@
     <Content Include="Templates\index.js" />
     <Content Include="Templates\style.css" />
     <None Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_MailExist.cshtml" />
     <None Include="Views\Shared\_RegistrationPartial.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

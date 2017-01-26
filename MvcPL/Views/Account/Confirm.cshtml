@@ -2,6 +2,23 @@
     ViewBag.Title = "Confirm Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Registrarion ending</h2>
-<p>
-<div>@ViewBag.Message</div>
+<style>
+    .marginTop {
+        margin-top: 50%;
+    }
+</style>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="marginTop" align="center">
+            <h2>Registrarion ending</h2>
+            <p>
+            <div style="font-size: large">@ViewBag.Message</div>
+            <div>
+                <img src="~/Content/Images/mail.png" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+    </div>
+ 

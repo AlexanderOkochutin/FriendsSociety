@@ -115,6 +115,13 @@ namespace MvcPL.Controllers
             return View("index",model);
         }
 
+        public JsonResult IsEmailExist([Bind(Prefix = "RegistrationViewModel")]string Email)
+        {
+            var result = ((SocialNetworkMembershipProvider)Membership.Provider)
+                         .GetUser(Email,false) == null;
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
 
         [AllowAnonymous]
         public ActionResult Confirm(string name)
