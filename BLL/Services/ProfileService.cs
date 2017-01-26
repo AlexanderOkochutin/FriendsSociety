@@ -16,6 +16,11 @@ namespace BLL.Services
     {
         private readonly IUnitOfWork unitOfWork;
 
+        public ProfileService(IUnitOfWork uow)
+        {
+            unitOfWork = uow;
+        }
+
         public BllProfile Get(int id)
         {
             return unitOfWork.Profiles.GetById(id).ToBllProfile();
@@ -25,6 +30,11 @@ namespace BLL.Services
         {
             unitOfWork.Profiles.Update(profile.ToDalProfile());
             unitOfWork.Commit();
+        }
+
+        public BllProfile GetByUserEmail(string email)
+        {
+            return unitOfWork.Profiles.GetByUserEmail(email).ToBllProfile();
         }
     }
 }

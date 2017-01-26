@@ -14,9 +14,9 @@ namespace ORM.Mappers
             ToTable("Users");
             HasKey(u => u.Id);
             Property(u => u.Email).IsRequired().HasMaxLength(64);
-            Property(u => u.Login).IsRequired().HasMaxLength(64);
             Property(u => u.PasswordHash).IsRequired().HasMaxLength(128);
             Property(u => u.PasswordSalt).IsRequired().HasMaxLength(128);
+            Property(u => u.MailSalt).HasMaxLength(128);
             HasMany(u => u.Roles)
                 .WithMany(r => r.Users)
                 .Map(m => m.ToTable("UsersRoles")

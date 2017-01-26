@@ -22,10 +22,10 @@ namespace DAL.Mappers
             {
                 Id = user.Id,
                 Email = user.Email,
-                Login = user.Login,
                 PasswordHash = user.Password,
                 PasswordSalt = user.PasswordSalt,
-                IsEmailConfirmed = user.IsEmailConfirmed
+                IsEmailConfirmed = user.IsEmailConfirmed,
+                MailSalt = user.MailSalt
             };
 
             return result;
@@ -43,10 +43,10 @@ namespace DAL.Mappers
             {
                 Id = user.Id,
                 Email = user.Email,
-                Login = user.Login,
                 Password = user.PasswordHash,
                 PasswordSalt = user.PasswordSalt,
-                IsEmailConfirmed = user.IsEmailConfirmed
+                IsEmailConfirmed = user.IsEmailConfirmed,
+                MailSalt = user.MailSalt
             };
 
             foreach (var role in user.Roles)

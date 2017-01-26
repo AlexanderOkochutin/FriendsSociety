@@ -11,5 +11,6 @@ namespace BLL.Interface.Services
     {
         BllProfile Get(int id);
         void Update(BllProfile profile);
+        BllProfile GetByUserEmail(string email);
     }
 }

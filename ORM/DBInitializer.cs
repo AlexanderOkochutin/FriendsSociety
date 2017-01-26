@@ -26,9 +26,9 @@ namespace ORM
             User adminUser = new User()
             {
                 Id = 1,
-                Login = "Admin",
                 Email = "okochutinwork@gmail.com",
                 IsEmailConfirmed = true,
+                MailSalt = passwordService.GetSalt(),
                 PasswordSalt = passwordService.GetSalt()
             };
 
@@ -48,9 +48,9 @@ namespace ORM
                 User user = new User()
                 {
                     Id = i,
-                    Login =  $"User{i-1}",
                     Email = $"user{i-1}@gmail.com",
                     IsEmailConfirmed = true,
+                    MailSalt =  passwordService.GetSalt(),
                     PasswordSalt = passwordService.GetSalt()
                 };
                 user.PasswordHash = passwordService.GetHash("123456", user.PasswordSalt);

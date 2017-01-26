@@ -47,9 +47,9 @@ namespace DAL.Concrete
             var user = users.FirstOrDefault(u => u.Id == dalUser.Id);
             if (!ReferenceEquals(user, null))
             {
-                user.Login = dalUser.Login;
                 user.Email = dalUser.Email;
                 user.IsEmailConfirmed = dalUser.IsEmailConfirmed;
+                user.MailSalt = dalUser.MailSalt;
                 user.Roles.Clear();
                 foreach (var item in dalUser.Roles)
                 {

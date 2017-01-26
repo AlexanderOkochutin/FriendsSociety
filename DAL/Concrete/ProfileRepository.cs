@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using DAL.Interface.DTO;
 using DAL.Interface.Repository;
 using DAL.Mappers;
@@ -92,6 +93,11 @@ namespace DAL.Concrete
                 profile.Messages.Add(message);
             }
             context.Entry(profile).State = EntityState.Modified;
+        }
+
+        public DalProfile GetByUserEmail(string email)
+        {
+            return context.Users.FirstOrDefault(u=>u.Email == email).Profile.ToDalProfile();
         }
     }
 }

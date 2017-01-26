@@ -4,5 +4,6 @@ namespace DAL.Interface.Repository
 {
     public interface IProfileRepository:IRepository<DalProfile>
     {
+        DalProfile GetByUserEmail(string email);
     }
 }

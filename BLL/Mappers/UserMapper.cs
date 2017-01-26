@@ -18,10 +18,10 @@ namespace BLL.Mappers
                 Id = dalUser.Id,
                 Roles = dalUser.Roles,
                 PasswordSalt = dalUser.PasswordSalt,
-                Login = dalUser.Login,
                 Email = dalUser.Email,
                 IsEmailConfirmed = dalUser.IsEmailConfirmed,
-                Password = dalUser.Password
+                Password = dalUser.Password,
+                MailSalt = dalUser.MailSalt
             };
             return bllUser;
         }
@@ -34,10 +34,10 @@ namespace BLL.Mappers
                 Id = bllUser.Id,
                 Roles = bllUser.Roles,
                 PasswordSalt = bllUser.PasswordSalt,
-                Login = bllUser.Login,
                 Email = bllUser.Email,
                 IsEmailConfirmed = bllUser.IsEmailConfirmed,
-                Password = bllUser.Password
+                Password = bllUser.Password,
+                MailSalt = bllUser.MailSalt
             };
             return dalUser;
         }

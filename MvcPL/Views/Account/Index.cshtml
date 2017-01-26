@@ -1,0 +1,20 @@
+﻿@using MvcPL.ViewModels
+@model MvcPL.ViewModels.LoginAndRegistrationModel
+@{
+    ViewBag.Title = "Login Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+<div class="login-page">
+    <div class="fieldset">
+        <fieldset class="register-fieldset">
+            @Html.Partial("_RegistrationPartial")
+        </fieldset>
+        <fieldset class="login-fieldset">
+            @Html.Partial("_LoginPartial")
+        </fieldset>
+    </div>
+</div>
+@section Scripts {
+@Scripts.Render("~/bundles/jqueryval")
+}
