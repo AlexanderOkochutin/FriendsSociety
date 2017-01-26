@@ -11,7 +11,7 @@ namespace MvcPL.Controllers
         // GET: Profile
         public ActionResult Index()
         {
-            return RedirectToAction("Index", "Account");
+            return View();
         }
     }
 }

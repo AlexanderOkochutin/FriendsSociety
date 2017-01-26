@@ -92,7 +92,7 @@ namespace MvcPL.Controllers
             var anyUser = userService.GetAll().Any(u => u.Email == model.RegistrationModel.Email);
             if (anyUser)
             {
-                ModelState.AddModelError("", "User with this address already registered.");
+                ModelState.AddModelError("", "Email whith this name already exist");
                 return View("index",model);
             }
             if (ModelState.IsValid)
@@ -115,14 +115,6 @@ namespace MvcPL.Controllers
             return View("index",model);
         }
 
-        public JsonResult IsEmailExist([Bind(Prefix = "RegistrationViewModel")]string Email)
-        {
-            var result = ((SocialNetworkMembershipProvider)Membership.Provider)
-                         .GetUser(Email,false) == null;
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
-
-
         [AllowAnonymous]
         public ActionResult Confirm(string name)
         {
@@ -143,28 +135,26 @@ namespace MvcPL.Controllers
 
         private void MailConfirmation(string email)
         {
-            // наш email с заголовком письма
             MailAddress from = new MailAddress("f-society@mail.com", "fsociety00.dat");
-            // кому отправляем
             MailAddress to = new MailAddress(email);
-            // создаем объект сообщения
             MailMessage m = new MailMessage(from, to);
-            // тема письма
             m.Subject = "Email confirmation";
-            // текст письма - включаем в него ссылку
-
             var mailSalt = userService.GetUserByEmail(email).MailSalt;
-
             m.Body = string.Format("To complete registration go to this link:" +
                             "<a href=\"{0}\" title=\"Confirm registration\">{0}</a>",
                 Url.Action("ConfirmEmail", "Account", new { MailSalt = mailSalt,Email = email}, Request.Url.Scheme));
             m.IsBodyHtml = true;
-            // адрес smtp-сервера, с которого мы и будем отправлять письмо
             SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
-            // логин и пароль
             smtp.EnableSsl = true;
             smtp.Credentials = new System.Net.NetworkCredential("okochutinwork@gmail.com", "GooOko331650");
             smtp.Send(m);
+        }
+
+        public JsonResult IsEmailExist([Bind(Include = "Email")]RegistrationViewModel RegistrationModel)
+        {
+            var result = ((SocialNetworkMembershipProvider) Membership.Provider)
+                .GetUser(RegistrationModel.Email, false)==null;
+            return Json(result,JsonRequestBehavior.AllowGet);
         }
     }
 }

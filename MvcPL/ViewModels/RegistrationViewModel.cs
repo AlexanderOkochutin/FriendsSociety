@@ -12,13 +12,14 @@ namespace MvcPL.ViewModels
         [Display(Name = "Enter your e-mail*")]
         [Required(ErrorMessage = "The field can not be empty")]
         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "incorrect email")]
-        [Remote("IsEmailExist","Account",ErrorMessage = "email with such name already exist")]
+        [Remote("IsEmailExist","Account",ErrorMessage = "Email whith this name already exist")]
         public string Email { get; set; }
 
         [Display(Name = "Enter your first name*")]
         [Required(ErrorMessage = "The field can not be empty")]
         public string FirstName { get; set; }
         [Display(Name = "Enter your last name")]
+        [Required(ErrorMessage = "The field can not be empty")]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Enter your password")]
