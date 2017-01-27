@@ -50,5 +50,11 @@ namespace BLL.Services
             var profile = unitOfWork.Profiles.GetById(id);
             return profile.Friends.Contains(idYour);
         }
+
+        public IEnumerable<BllProfile> GetAllFriendsOfId(int id)
+        {
+            var friends = unitOfWork.Profiles.GetAllFriendsOfId(id);
+            return friends.Map();
+        }
     }
 }

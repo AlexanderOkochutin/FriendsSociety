@@ -59,5 +59,7 @@ namespace MvcPL.ViewModels
 
         public bool IsYouSendInvite { get; set; }
 
+        public bool IsYou { get; set; }
+
     }
 }

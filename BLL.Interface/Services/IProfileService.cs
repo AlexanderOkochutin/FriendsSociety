@@ -14,5 +14,6 @@ namespace BLL.Interface.Services
         BllProfile GetByUserEmail(string email);
         IEnumerable<BllProfile> Find(string stringKey = "", string city = null);
         bool IsYourFriend(int idYour,int id);
+        IEnumerable<BllProfile> GetAllFriendsOfId(int id);
     }
 }

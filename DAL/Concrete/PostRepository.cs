@@ -90,7 +90,10 @@ namespace DAL.Concrete
             post.AuthorId = entity.AuthorId;
             post.IsOnTheWall = entity.IsOnTheWall;
             post.Text = entity.Text;
-
+            post.Comments.Clear();
+            post.Files.Clear();
+            post.Likes.Clear();
+            post.RepostProfiles.Clear();
             foreach (var comment in entity.Comments)
             {
                 post.Comments.Add(messages.FirstOrDefault(m => m.Id == comment));

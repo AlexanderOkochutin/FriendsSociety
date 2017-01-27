@@ -16,7 +16,7 @@
             </div>    
         </div>
         <div class="well">
-            <div><a href="@Url.Action("Index","Friend")">Friends</a></div>
+            <div><a href="@Url.Action("ShowUserFriends","Friend",new {id=Model.Id})">Friends</a></div>
             <hr/>
             @{
                 var r = new Random();

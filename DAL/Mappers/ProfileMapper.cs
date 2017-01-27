@@ -84,5 +84,15 @@ namespace DAL.Mappers
             }
             return dalProfiles;
         }
+
+        public static IEnumerable<DalProfile> Map(this IEnumerable<Profile> profiles)
+        {
+            var dalProfiles = new List<DalProfile>();
+            foreach (var item in profiles)
+            {
+                dalProfiles.Add(item.ToDalProfile());
+            }
+            return dalProfiles;
+        }
     }
 }

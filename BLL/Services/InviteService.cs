@@ -58,5 +58,24 @@ namespace BLL.Services
         {
             return unitOfWork.Invites.GetAllInviteProfiles(idTo).Map();
         }
+
+        public void RefuseInvite(int idFrom, int idTo)
+        {
+            var inviteId = unitOfWork.Invites.GetByFromToId(idFrom, idTo).Id;
+            unitOfWork.Invites.DeleteById(inviteId);
+            unitOfWork.Commit();
+        }
+
+        public void DeleteFriend(int id1, int id2)
+        {
+            var profile1 = unitOfWork.Profiles.GetById(id1);
+            var profile2 = unitOfWork.Profiles.GetById(id2);
+            profile1.Friends.Remove(id2);
+            profile2.Friends.Remove(id1);
+            unitOfWork.Profiles.Update(profile1);
+            unitOfWork.Profiles.Update(profile2);
+            unitOfWork.Commit();
+        } 
+
     }
 }

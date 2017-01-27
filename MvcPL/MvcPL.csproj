@@ -196,6 +196,7 @@
     <Content Include="Views\Photo\Index.cshtml" />
     <Content Include="Views\Account\About.cshtml" />
     <Content Include="Views\Shared\_Friends.cshtml" />
+    <Content Include="Views\Message\SendFromTo.cshtml" />
     <None Include="Views\Shared\_Search.cshtml" />
   </ItemGroup>
   <ItemGroup>

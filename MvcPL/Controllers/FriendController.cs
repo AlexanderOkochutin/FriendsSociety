@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BLL.Interface.Services;
 using MvcPL.Infrastructure.Mappers;
 using MvcPL.ViewModels;
+using Ninject.Infrastructure.Language;
 
 namespace MvcPL.Controllers
 {
@@ -49,16 +50,32 @@ namespace MvcPL.Controllers
         }
 
         [Authorize]
-        public ActionResult ShowUserFriends(int i)
+        public ActionResult ShowUserFriends(int id)
         {
             var user = userService.GetUserByEmail(HttpContext.User.Identity.Name);
-            if (i == user.Id)
+            if (id == user.Id)
             {
                 return RedirectToAction("Index");
             }
             else
             {
-                return View();
+                var bllProfiles = profileService.GetAllFriendsOfId(id);
+                var searcherId = profileService.GetByUserEmail(HttpContext.User.Identity.Name).Id;
+                var result = bllProfiles.Map();
+                foreach (var profile in result)
+                {
+                    profile.IsYourFriend = profileService.IsYourFriend(searcherId, profile.Id);
+                    profile.IsYouSendInvite = inviteService.IsInviteSend(searcherId, profile.Id);
+                    profile.IsYou = searcherId == profile.Id;
+                }
+                if (Request.IsAjaxRequest())
+                {
+                    return View("ShowUserFriends",result.ToList());
+                }
+                else
+                {
+                    return View(result.ToList());
+                }
             }
         }
 
@@ -82,9 +99,17 @@ namespace MvcPL.Controllers
         }
 
         [Authorize]
-        public ActionResult Refuse()
+        public ActionResult Refuse(int idFrom,int idTo)
         {
-            throw new NotImplementedException();
+            inviteService.RefuseInvite(idFrom,idTo);
+            return RedirectToAction("Index", "Friend");
+        }
+
+        [Authorize]
+        public ActionResult DeleteFriend(int id1, int id2)
+        {
+            inviteService.DeleteFriend(id1,id2);
+            return RedirectToAction("Index", "Friend");
         }
     }
 }

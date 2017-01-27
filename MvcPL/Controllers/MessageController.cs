@@ -13,5 +13,10 @@ namespace MvcPL.Controllers
         {
             return View();
         }
+
+        public ActionResult SendFromTo(int idFrom,int idTo)
+        {
+            return View();
+        }
     }
 }

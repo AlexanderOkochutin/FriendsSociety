@@ -54,13 +54,13 @@
                             </dl>
                         </td>
                         <td style="padding-top: 30px">
-                            <div id="@Model.FriendsInvites.Entities[i].Id-addf" align="left">
-                                @Ajax.ActionLink("Accept", "Accept", "Friend", new {idFrom = Model.FriendsInvites.Entities[i].Id, idTo = Model.UserId}, new AjaxOptions {UpdateTargetId = "friends", InsertionMode = InsertionMode.ReplaceWith}, htmlAttributes: new {@class = "btn btn-default btn-sm green"})
+                            <div align="left">
+                                @Ajax.ActionLink("Accept", "Accept", "Friend", new {idFrom = Model.FriendsInvites.Entities[i].Id, idTo = Model.UserId}, new AjaxOptions {UpdateTargetId = "friends", InsertionMode = InsertionMode.ReplaceWith}, htmlAttributes: new {@class = "btn btn-default btn-sm green", @id = "link1" })
                             </div>
                         </td>
                         <td style="padding-top: 30px">
-                            <div id="@Model.FriendsInvites.Entities[i].Id-addf" align="left">
-                                @Ajax.ActionLink("Refuse", "Refuse", "Friend", new {id = Model.FriendsInvites.Entities[i].Id, idTo = Model.UserId}, new AjaxOptions {UpdateTargetId = "friends", InsertionMode = InsertionMode.ReplaceWith}, htmlAttributes: new {@class = "btn btn-default btn-sm red"})
+                            <div align="left">
+                                @Ajax.ActionLink("Refuse", "Refuse", "Friend", new {idFrom = Model.FriendsInvites.Entities[i].Id, idTo = Model.UserId}, new AjaxOptions {UpdateTargetId = "friends", InsertionMode = InsertionMode.ReplaceWith}, htmlAttributes: new {@class = "btn btn-default btn-sm red", @id = "link2" })
                             </div>
                         </td>
                     </tr>
@@ -113,6 +113,16 @@
                                     @Html.DisplayFor(model => friend.City)
                                 </dd>
                             </dl>
+                        </td>
+                        <td style="padding-top: 30px">
+                            <div align="left">
+                                @Html.ActionLink("Message","SendFromTo","Message",new {idFrom = Model.UserId, idTo = friend.Id},htmlAttributes: new {@class= "btn btn-default btn-sm green" })
+                            </div>
+                        </td>
+                        <td style="padding-top: 30px">
+                            <div align="left">
+                                @Ajax.ActionLink("Delete", "DeleteFriend", "Friend", new { id1 = Model.UserId, id2 = friend.Id }, new AjaxOptions { UpdateTargetId = "friends", InsertionMode = InsertionMode.ReplaceWith }, htmlAttributes: new { @class = "btn btn-default btn-sm red" })
+                            </div>
                         </td>
                     </tr>
                 }

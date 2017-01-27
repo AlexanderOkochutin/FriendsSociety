@@ -12,6 +12,8 @@ namespace BLL.Interface.Services
         bool IsInviteSend(int idFrom, int idTo);
         void SendInvite(int idFrom, int idTo);
         void AddFriend(int idFrom, int idTo);
+        void DeleteFriend(int id1, int id2);
+        void RefuseInvite(int idFrom, int idTo);
         IEnumerable<BllProfile> GetAllInviteProfiles(int idTo);
     }
 }

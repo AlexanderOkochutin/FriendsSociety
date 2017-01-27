@@ -73,6 +73,10 @@ namespace DAL.Concrete
                 profile.Gender = dalProfile.Gender;
                 profile.RelationStatus = dalProfile.RelationStatus;
                 profile.City = dalProfile.City;
+                profile.Friends.Clear();
+                profile.Messages.Clear();
+                profile.Posts.Clear();
+                profile.Files.Clear();
             }
             foreach (var id in dalProfile.Friends)
             {
@@ -98,6 +102,12 @@ namespace DAL.Concrete
         public DalProfile GetByUserEmail(string email)
         {
             return context.Users.FirstOrDefault(u=>u.Email == email).Profile.ToDalProfile();
+        }
+
+        public IEnumerable<DalProfile> GetAllFriendsOfId(int id)
+        {
+            var dalProfiles = Profiles.FirstOrDefault(p => p.Id == id).Friends.Map();
+            return dalProfiles;
         }
     }
 }

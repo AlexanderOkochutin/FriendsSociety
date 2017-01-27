@@ -34,7 +34,34 @@
             </div>
         </div>
         <div class="well">
-            <img class="img-responsive" src="//placehold.it/300x300">
+            <div><a href="@Url.Action("ShowUserFriends","Friend",new {id = Model.Id})">Friends</a></div>
+            <hr />
+            @{
+                var r = new Random();
+                var friends = Model.Friends.ToArray();
+                var shownFriends = new List<int>();
+                int max = (friends.Length <= 6) ? friends.Length : 6;
+                int i = 0;
+                while (i < max)
+                {
+                    var temp = friends[r.Next(friends.Length)];
+                    if (!shownFriends.Contains(temp))
+                    {
+                        shownFriends.Add(temp);
+                        i++;
+                    }
+                }
+                foreach (var friend in shownFriends)
+                {
+                    <a href="@Url.Action("UserProfile", "Profile", new {id = friend})">
+                        <div class="frame-round">
+                            <div class="crop">
+                                @Html.Partial("_ProfilePhoto", friend);
+                            </div>
+                        </div>
+                    </a>
+                }
+            }
         </div>
         <div class="well">
             The new Bootstrap 3 is a smaller build. The separate Bootstrap
@@ -84,7 +111,7 @@
 </div>
 <hr>
 <div class="row">
-    <div class="col-sm-4"><img class="img-responsive" src="//placehold.it/220x180/777777/FFF"></div>
+   <div class="col-sm-4"><img class="img-responsive" src="//placehold.it/220x180/777777/FFF"></div>
     <div class="col-sm-8">
         <h2>Large, Small or Tiny</h2><p>
             The new fluid grid comes in 3 flavors, or actually sizes. The large grid <code>col-lg-*</code> works exactly like the Bootstrap 2.x <code>span*</code> did.
