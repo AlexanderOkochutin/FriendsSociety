@@ -4,6 +4,7 @@
 /// <reference path="jquery.min.js" />
 /// <reference path="jquery.scrolly.min.js" />
 /// <reference path="jquery.scrollzer.min.js" />
+/// <reference path="jquery.unobtrusive-ajax.min.js" />
 /// <reference path="jquery.validate.min.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />
 /// <reference path="jquery-3.1.1.js" />
