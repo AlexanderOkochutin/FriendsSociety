@@ -39,8 +39,12 @@ namespace ORM
             {
                 adminUser.Roles.Add(role);
             }
-
-            context.Set<User>().Add(adminUser);
+            var adminProfile = new Profile()
+            {
+                Id = 1
+            };
+            context.Set<Profile>().Add(adminProfile);
+           context.Set<User>().Add(adminUser);
             context.SaveChanges();
 
             for (int i = 2; i < 7; i++)

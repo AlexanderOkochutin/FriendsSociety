@@ -12,5 +12,6 @@ namespace BLL.Interface.Services
         BllProfile Get(int id);
         void Update(BllProfile profile);
         BllProfile GetByUserEmail(string email);
+        IEnumerable<BllProfile> Find(string stringKey = "", string city = null);
     }
 }

@@ -71,5 +71,10 @@ namespace DAL.Concrete
                 context.Entry(file).State = EntityState.Modified;
             }
         }
+
+        public DalFile GetByName(string name)
+        {
+            return files.FirstOrDefault(f => f.Name == name).ToDalFile();
+        }
     }
 }

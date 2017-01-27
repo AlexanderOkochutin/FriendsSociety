@@ -37,6 +37,7 @@ namespace DependencyResolver
             kernel.Bind<IInviteRepository>().To<InviteRepository>();
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IProfileService>().To<ProfileService>();
+            kernel.Bind<IFileService>().To<FileService>();
         }
     }
 }

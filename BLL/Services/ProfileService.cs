@@ -36,5 +36,13 @@ namespace BLL.Services
         {
             return unitOfWork.Profiles.GetByUserEmail(email).ToBllProfile();
         }
+
+        public IEnumerable<BllProfile> Find(string stringKey = "", string city = null)
+        {
+            var profiles = unitOfWork.Profiles.GetAll();
+            if (!ReferenceEquals(stringKey, null)) profiles = profiles.Where(p => (p.FirstName + " " + p.LastName).ToLower().Contains(stringKey.ToLower()));
+            if (!ReferenceEquals(city, null)) profiles = profiles.Where(p => p.City != null && p.City.ToLower().Contains(city.ToLower()));
+            return profiles.Map();
+        }
     }
 }

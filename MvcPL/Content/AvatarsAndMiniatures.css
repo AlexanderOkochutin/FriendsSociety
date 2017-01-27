@@ -1,0 +1,57 @@
+﻿       .topMargin {
+            margin-top: 5%;
+        }
+
+        .status {
+            font-size: x-large;
+        }
+
+        .verticalAlighn {
+            vertical-align: middle;
+        }
+
+        .frame-square {
+            display: inline-block;
+            vertical-align: top;
+            width: 225px;
+            height: 225px;
+        }
+
+        .frame-round {
+            background: #00bc8c;
+            border: 2px solid #000;
+            display: inline-block;
+            vertical-align: top;
+            padding: 2px;
+            width: 60px;
+            height: 60px;
+            margin-right: .5em;
+            margin-bottom: .3em;
+        }
+
+        .frame-round {
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+            .frame-round .crop {
+                border-radius: 50%;
+            }
+
+        .crop {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .crop img {
+                display: block;
+                min-width: 100%;
+                min-height: 100%;
+                margin: auto;
+                position: absolute;
+                top: -100%;
+                right: -100%;
+                bottom: -100%;
+                left: -100%;
+            }

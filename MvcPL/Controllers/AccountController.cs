@@ -97,7 +97,6 @@ namespace MvcPL.Controllers
             }
             if (ModelState.IsValid)
             {
-
                 var membershipUser = ((SocialNetworkMembershipProvider)Membership.Provider)
                     .CreateUser(model.RegistrationModel);
 
@@ -155,6 +154,12 @@ namespace MvcPL.Controllers
             var result = ((SocialNetworkMembershipProvider) Membership.Provider)
                 .GetUser(RegistrationModel.Email, false)==null;
             return Json(result,JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Account");
         }
     }
 }

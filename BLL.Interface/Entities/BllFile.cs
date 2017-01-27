@@ -19,6 +19,6 @@ namespace BLL.Interface.Entities
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public int ProfileId { get; set; }
-        public int PostId { get; set; }
+        public int? PostId { get; set; }
     }
 }

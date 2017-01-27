@@ -49,7 +49,7 @@ namespace DAL.Mappers
                 MimeType = file.MimeType,
                 Name = file.Name,
                 ProfileId = file.Profile.Id,
-                PostId = file.Post.Id
+                PostId = file.Post?.Id
             };
             return result;
         }
