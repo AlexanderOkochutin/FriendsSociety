@@ -165,6 +165,9 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FriendController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
@@ -178,11 +181,21 @@
     <Compile Include="Providers\SocialNetworkMembershipProvider.cs" />
     <Compile Include="Providers\SocialNetworkRoleProvider.cs" />
     <Compile Include="ViewModels\FileViewModel.cs" />
+    <Compile Include="ViewModels\FriendsViewModel.cs" />
     <Compile Include="ViewModels\GenericPaginationModel.cs" />
     <Compile Include="ViewModels\LoginAndRegistrationModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
+    <None Include="Views\Friend\ShowUserFriends.cshtml" />
+    <Content Include="Content\Images\background.jpg" />
+    <Content Include="Views\Profile\UserProfile.cshtml" />
+    <Content Include="Views\Shared\_InviteSend.cshtml" />
+    <Content Include="Views\Friend\Index.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Photo\Index.cshtml" />
+    <Content Include="Views\Account\About.cshtml" />
+    <Content Include="Views\Shared\_Friends.cshtml" />
     <None Include="Views\Shared\_Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -195,7 +208,7 @@
     <Content Include="Content\bootstrap_previous.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\avatar.jpg" />
-    <Content Include="Content\Images\BackGround.jpg" />
+    <Content Include="Content\Images\BackGround2.jpg" />
     <Content Include="Content\Images\banner.jpg" />
     <Content Include="Content\Images\default-avatar.jpg" />
     <Content Include="Content\Images\fsociety-icon.png" />

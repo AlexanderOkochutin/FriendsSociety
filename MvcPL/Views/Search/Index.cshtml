@@ -2,7 +2,9 @@
 @{
     Layout = "~/Views/Shared/_Profile.cshtml";
 }
-@Scripts.Render("~/bundles/jquery-ui")
-@Html.Partial("_Search", Model)
-@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
-<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<div class="col-sm-7 col-sm-offset-1 well">
+    <div align="center">
+        @Html.Partial("_Search", Model)
+    </div>
+</div>
+

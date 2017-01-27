@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Interface.Services
 {
-    public interface ILikeSrvice
+    public interface ILikeService
     {
     }
 }

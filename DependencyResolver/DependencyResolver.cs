@@ -27,7 +27,6 @@ namespace DependencyResolver
         {
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             kernel.Bind<DbContext>().To<SocialNetworkContext>().InRequestScope();
-            kernel.Bind<IPasswordService>().To<PasswordService>();
             kernel.Bind<IUserRepository>().To<UserRepository>();
             kernel.Bind<IProfileRepository>().To<ProfileRepository>();
             kernel.Bind<IFileRepository>().To<FileRepository>();
@@ -35,9 +34,14 @@ namespace DependencyResolver
             kernel.Bind<IMessageRepository>().To<MessageRepository>();
             kernel.Bind<ILikeRepository>().To<LikeRepository>();
             kernel.Bind<IInviteRepository>().To<InviteRepository>();
+            kernel.Bind<IPasswordService>().To<PasswordService>();
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IProfileService>().To<ProfileService>();
             kernel.Bind<IFileService>().To<FileService>();
+            kernel.Bind<IInviteService>().To<InviteService>();
+            kernel.Bind<ILikeService>().To<LikeService>();
+            kernel.Bind<IPostService>().To<PostService>();
+            kernel.Bind<IMessageService>().To<MessageService>();
         }
     }
 }

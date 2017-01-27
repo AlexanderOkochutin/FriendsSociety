@@ -1,0 +1,122 @@
+﻿@using MvcPL.Infrastructure
+@using MvcPL.ViewModels
+@model MvcPL.ViewModels.FriendsViewModel
+
+<div id="friends">
+    @using (Ajax.BeginForm("Index", "Friend", new AjaxOptions {UpdateTargetId = "friends"}))
+    {
+        <div class="col-md-12 well">
+            @if (Model.Friends.Count == 0 && Model.FriendsInvites.Entities.Count == 0)
+            {
+                <h2>Now you have no friends, use <a href="@Url.Action("Index", "Search")">search!</a>
+                </h2>
+            }
+            @if (Model.FriendsInvites.Entities.Count > 0)
+            {
+                <h2>Friend invites</h2>
+                <hr/>
+            }
+            <table class="table table-hover col-md-5">
+                @for (int i = 0; i < Model.FriendsInvites.Entities.Count; i++)
+                {
+                    <tr>
+                        <td class="col-xs-3">
+                            <div style="padding-top: 10px">
+                                <a href="@Url.Action("UserProfile", "Profile", new {id = Model.FriendsInvites.Entities[i].Id})">
+                                    <div class="frame-round">
+                                        <div class="crop">
+                                            <img src="@Url.Action("GetImage", "Profile", new {id = Model.FriendsInvites.Entities[i].Id})" alt="I am" class="img-circle" width="90" height="90"/>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    Last Name:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => Model.FriendsInvites.Entities[i].LastName)
+                                </dd>
+                                <dt>
+                                    First name:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => Model.FriendsInvites.Entities[i].FirstName)
+                                </dd>
+                                <dt>
+                                    City:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => Model.FriendsInvites.Entities[i].City)
+                                </dd>
+                            </dl>
+                        </td>
+                        <td style="padding-top: 30px">
+                            <div id="@Model.FriendsInvites.Entities[i].Id-addf" align="left">
+                                @Ajax.ActionLink("Accept", "Accept", "Friend", new {idFrom = Model.FriendsInvites.Entities[i].Id, idTo = Model.UserId}, new AjaxOptions {UpdateTargetId = "friends", InsertionMode = InsertionMode.ReplaceWith}, htmlAttributes: new {@class = "btn btn-default btn-sm green"})
+                            </div>
+                        </td>
+                        <td style="padding-top: 30px">
+                            <div id="@Model.FriendsInvites.Entities[i].Id-addf" align="left">
+                                @Ajax.ActionLink("Refuse", "Refuse", "Friend", new {id = Model.FriendsInvites.Entities[i].Id, idTo = Model.UserId}, new AjaxOptions {UpdateTargetId = "friends", InsertionMode = InsertionMode.ReplaceWith}, htmlAttributes: new {@class = "btn btn-default btn-sm red"})
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div align="left">
+                <div class="btn-group">
+                    @Html.PageSubmit(Model.FriendsInvites.Pagination)
+                </div>
+            </div>
+
+            @if (Model.Friends.Count > 0)
+            {
+                <h2>Your friends</h2>
+                <hr/>
+            }
+            <table class="table table-hover col-md-5">
+                @foreach (var friend in Model.Friends)
+                {
+                    <tr>
+                        <td class="col-xs-3">
+                            <div style="padding-top: 10px">
+                                <a href="@Url.Action("UserProfile", "Profile", new {id = friend.Id})">
+                                    <div class="frame-round">
+                                        <div class="crop">
+                                            <img src="@Url.Action("GetImage", "Profile", new {id = friend.Id})" alt="I am" class="img-circle" width="90" height="90"/>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </td>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    Last Name:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => friend.LastName)
+                                </dd>
+                                <dt>
+                                    First name:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => friend.FirstName)
+                                </dd>
+                                <dt>
+                                    City:
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => friend.City)
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+</div>

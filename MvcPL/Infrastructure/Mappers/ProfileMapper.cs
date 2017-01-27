@@ -65,7 +65,7 @@ namespace MvcPL.Infrastructure.Mappers
         /// </summary>
         /// <param name="users"></param>
         /// <returns>new BllUsers collection same as users</returns>
-        public static IEnumerable<ProfileViewModel> Map(IEnumerable<BllProfile> profiles)
+        public static IEnumerable<ProfileViewModel> Map(this IEnumerable<BllProfile> profiles)
         {
             var Profiles = new List<ProfileViewModel>();
             foreach (var item in profiles)

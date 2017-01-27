@@ -161,5 +161,11 @@ namespace MvcPL.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Account");
         }
+
+        [AllowAnonymous]
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }

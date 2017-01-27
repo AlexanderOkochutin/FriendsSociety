@@ -21,6 +21,5 @@ namespace MvcPL.ViewModels
         /// Finded users
         /// </summary>
         public GenericPaginationModel<ProfileViewModel> Profiles { get; set; }
-
     }
 }

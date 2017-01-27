@@ -1,5 +1,10 @@
 ﻿@using MvcPL.Infrastructure
 @model MvcPL.ViewModels.SearchViewModel
+<style>
+    .green {
+        background: #00bc8c;
+    }
+</style>
 <div id="results" class="topMargin">
     @using (Ajax.BeginForm("Index", "Search",new AjaxOptions { UpdateTargetId = "results" }))
     {
@@ -17,47 +22,70 @@
                     @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Search" class="btn btn-default" />
                 </div>
             </div>
         </div>
     </div>
     if (!ReferenceEquals(Model, null))
     {
-    <table class="table table-striped col-md-5">
+    <table class="table col-md-5" style="background: dimgrey; border-collapse: collapse">
         @for (int i = 0; i < Model.Profiles.Entities.Count; i++)
         {
-        <tr>
-            <td class="col-xs-3">
-                <div class="frame-round">
-                    <div class="crop">
-                        <img src="@Url.Action("GetImage", "Profile" , new {id=Model.Profiles.Entities[i].Id})" alt="I am" class="img-circle" width="90" height="90" />
+
+            <tr>
+                <td class="col-xs-3">
+                    <div style="padding-top: 10px">
+                        <a href="@Url.Action("UserProfile", "Profile", new {id = Model.Profiles.Entities[i].Id})">
+                            <div class="frame-round">
+                                <div class="crop">
+                                    <img src="@Url.Action("GetImage", "Profile", new {id = Model.Profiles.Entities[i].Id})" alt="I am" class="img-circle" width="90" height="90"/>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-            </td>
-            <td>
-                <dl class="dl-horizontal">
-                    <dt>
-                        Last Name:
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => Model.Profiles.Entities[i].LastName)
-                    </dd>
-                    <dt>
-                        First name:
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => Model.Profiles.Entities[i].FirstName)
-                    </dd>
-                    <dt>
-                        City:
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => Model.Profiles.Entities[i].City)
-                    </dd>
-                </dl>
-            </td>
-        </tr>
+                </td>
+                <td class="td">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Last Name:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => Model.Profiles.Entities[i].LastName)
+                        </dd>
+                        <dt>
+                            First name:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => Model.Profiles.Entities[i].FirstName)
+                        </dd>
+                        <dt>
+                            City:
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => Model.Profiles.Entities[i].City)
+                        </dd>
+                    </dl>
+                </td>
+                <td style="padding-top: 30px;">
+                    @{
+                        if (!Model.Profiles.Entities[i].IsYouSendInvite && !Model.Profiles.Entities[i].IsYourFriend)
+                        {
+                            <div id="@Model.Profiles.Entities[i].Id-addf" align="left">
+                                @Ajax.ActionLink("Send Invite", "SendInvite", "Friend", new {id = Model.Profiles.Entities[i].Id}, new AjaxOptions {UpdateTargetId = Model.Profiles.Entities[i].Id.ToString() + "-addf", InsertionMode = InsertionMode.ReplaceWith}, htmlAttributes: new {@class = "btn btn-default btn-sm green"})
+                            </div>
+                        }
+                        else if (!Model.Profiles.Entities[i].IsYourFriend)
+                        {
+                            <button type="button" class="btn btn-default btn-sm" style="background: #00bc8c" disabled="disabled">Invite send</button>
+                        }
+                        else
+                        {
+                            <p style="color: #00bc8c" align="left">Is your friend</p>
+                        }
+                    }
+                </td>
+            </tr>
         }
     </table>
     <div class="btn-group">

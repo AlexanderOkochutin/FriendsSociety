@@ -44,5 +44,11 @@ namespace BLL.Services
             if (!ReferenceEquals(city, null)) profiles = profiles.Where(p => p.City != null && p.City.ToLower().Contains(city.ToLower()));
             return profiles.Map();
         }
+
+        public bool IsYourFriend(int idYour,int id)
+        {
+            var profile = unitOfWork.Profiles.GetById(id);
+            return profile.Friends.Contains(idYour);
+        }
     }
 }

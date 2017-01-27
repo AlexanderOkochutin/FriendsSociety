@@ -67,5 +67,21 @@ namespace DAL.Concrete
             invite.ProfielTo = profiles.FirstOrDefault(p => p.Id == entity.ProfileTo);
             context.Entry(invite).State = EntityState.Modified;
         }
+
+        public DalInvite GetByFromToId(int idFrom,int idTo)
+        {
+            return invites.FirstOrDefault(i => i.ProfileFrom.Id == idFrom && i.ProfielTo.Id == idTo).ToDalInvite();
+        }
+
+        public IEnumerable<DalProfile> GetAllInviteProfiles(int idTo)
+        {
+            var allInvites =  invites.Where(i => i.ProfielTo.Id == idTo);
+            var allProfiles = new List<DalProfile>();
+            foreach (var invite in allInvites)
+            {
+                allProfiles.Add(profiles.FirstOrDefault(p=>p.Id == invite.ProfileFrom.Id).ToDalProfile());
+            }
+            return allProfiles;
+        }
     }
 }

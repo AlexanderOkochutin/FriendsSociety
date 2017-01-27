@@ -3,24 +3,7 @@
 @{
     Layout = "~/Views/Shared/_Profile.cshtml";
 }
-<style>
-    .fieldset button {
-            font-family: "Roboto", sans-serif;
-            text-transform: uppercase;
-            outline: 0;
-            background: #00bc8c;
-            width: 100%;
-            border: 0;
-            padding: 15px;
-            color: #FFFFFF;
-            font-size: 14px;
-            cursor: pointer;
-        }
 
-            .fieldset button:hover, .fieldset button:active, .fieldset button:focus {
-                background: #3cb371;
-            }
-</style>
 <div class="col-sm-3">
     <div id="midCol" data-spy="affix" data-offset-top="300">
         <div class="well">
@@ -33,7 +16,35 @@
             </div>    
         </div>
         <div class="well">
-            <img class="img-responsive" src="//placehold.it/300x300">
+            <div><a href="@Url.Action("Index","Friend")">Friends</a></div>
+            <hr/>
+            @{
+                var r = new Random();
+                var friends = Model.Friends.ToArray();
+                var shownFriends = new List<int>();
+                int max = (friends.Length <= 6) ? friends.Length : 6;
+                int i = 0;
+                while (i < max)
+                {
+                    var temp = friends[r.Next(friends.Length)];
+                    if (!shownFriends.Contains(temp))
+                    {
+                        shownFriends.Add(temp);
+                        i++;
+                    }
+                }
+                foreach (var friend in shownFriends)
+                {
+                    <a href="@Url.Action("UserProfile", "Profile", new {id = friend})">
+                        <div class="frame-round">
+                            <div class="crop">
+                                @Html.Partial("_ProfilePhoto", friend);
+                            </div>
+                        </div>
+                    </a>
+                }
+            }
+
         </div>
         <div class="well">
             The new Bootstrap 3 is a smaller build. The separate Bootstrap
@@ -80,7 +91,7 @@
             </div>
             <div class="col-md-3">
                 <div class="fieldset">
-                    <button onclick="location.href='@Url.Action("Edit", "Profile")'">Edit</button>
+                    <button onclick="location.href = '@Url.Action("Edit", "Profile")'">Edit</button>
                 </div>
             </div> 
         </div>

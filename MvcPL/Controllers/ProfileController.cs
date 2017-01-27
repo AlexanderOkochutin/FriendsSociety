@@ -14,12 +14,14 @@ namespace MvcPL.Controllers
         private readonly IProfileService profileService;
         private readonly IFileService fileService;
         private readonly IUserService userService;
+        private readonly IInviteService inviteService;
 
-        public ProfileController(IProfileService ps, IFileService fs, IUserService us)
+        public ProfileController(IProfileService ps, IFileService fs, IUserService us,IInviteService ins)
         {
             profileService = ps;
             userService = us;
             fileService = fs;
+            inviteService = ins;
         }
 
         [Authorize]
@@ -29,6 +31,22 @@ namespace MvcPL.Controllers
             if (user == null) return RedirectToAction("Login", "Account");
             var profile = profileService.Get(user.Id);
             return View(profile.ToViewProfileModel());
+        }
+
+        [Authorize]
+        [Route("User", Name = "User")]
+        public ActionResult UserProfile(int id)
+        {
+            var user = userService.GetUserByEmail(HttpContext.User.Identity.Name);
+            var profile = profileService.Get(id);
+            if (user.Id == id)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(profile.ToViewProfileModel());
+            }
         }
 
         [Authorize]
@@ -100,6 +118,6 @@ namespace MvcPL.Controllers
             string path = System.Web.HttpContext.Current.Server.MapPath("~/Content/Images/default-avatar.jpg");
             byte[] fileBytes = System.IO.File.ReadAllBytes(path);
             return File(fileBytes, "image/jpg");
-        }
+        }    
     }
 }

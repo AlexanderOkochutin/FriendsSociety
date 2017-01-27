@@ -55,5 +55,9 @@ namespace MvcPL.ViewModels
 
         public ICollection<int> MessageId { get; set; }
 
+        public bool IsYourFriend { get; set; }
+
+        public bool IsYouSendInvite { get; set; }
+
     }
 }
