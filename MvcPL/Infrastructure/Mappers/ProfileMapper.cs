@@ -27,10 +27,7 @@ namespace MvcPL.Infrastructure.Mappers
                 RelationStatus = profile.RelationStatus,
                 FirstName = profile.FirstName,
                 City = profile.City,
-                Friends = profile.Friends,
-                PostsId = profile.PostsId,
-                FilesId = profile.FilesId,
-                MessageId = profile.FilesId
+                Friends = profile.Friends.ToList()
             };
             return result;
         }
@@ -52,10 +49,7 @@ namespace MvcPL.Infrastructure.Mappers
                 RelationStatus = profile.RelationStatus,
                 FirstName = profile.FirstName,
                 City = profile.City,
-                Friends = profile.Friends,
-                PostsId = profile.PostsId,
-                FilesId = profile.FilesId,
-                MessageId = profile.FilesId
+                Friends = profile.Friends
             };
             return result;
         }

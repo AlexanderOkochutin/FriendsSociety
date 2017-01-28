@@ -76,5 +76,10 @@ namespace DAL.Concrete
         {
             return files.FirstOrDefault(f => f.Name == name).ToDalFile();
         }
+
+        public IEnumerable<DalFile> GetAllGalleryFiles(int id)
+        {
+            return files.Where(f => f.Profile.Id == id && f.Name == "galery").Map();
+        }
     }
 }

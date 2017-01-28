@@ -74,27 +74,11 @@ namespace DAL.Concrete
                 profile.RelationStatus = dalProfile.RelationStatus;
                 profile.City = dalProfile.City;
                 profile.Friends.Clear();
-                profile.Messages.Clear();
-                profile.Posts.Clear();
-                profile.Files.Clear();
             }
             foreach (var id in dalProfile.Friends)
             {
                 var temp = Profiles.FirstOrDefault(p => p.Id == id);
                 profile.Friends.Add(temp);
-            }
-            foreach (var post in dalProfile.PostsId)
-            {
-                var temp = Posts.FirstOrDefault(p => p.Id == post);
-                profile.Posts.Add(temp);
-            }
-            foreach (var file in Files)
-            {
-                profile.Files.Add(file);
-            }
-            foreach (var message in Messages)
-            {
-                profile.Messages.Add(message);
             }
             context.Entry(profile).State = EntityState.Modified;
         }

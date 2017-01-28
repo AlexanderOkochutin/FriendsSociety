@@ -54,19 +54,7 @@ namespace DAL.Mappers
             foreach (var friend in profile.Friends)
             {
                 result.Friends.Add(friend.Id);
-            }
-            foreach (var post in profile.Posts)
-            {
-                result.PostsId.Add(post.Id);
-            }
-            foreach (var message in profile.Messages)
-            {
-                result.MessageId.Add(message.Id);
-            }
-            foreach (var post in profile.Posts)
-            {
-                result.PostsId.Add(post.Id);
-            }           
+            }        
             return result;
         }
 

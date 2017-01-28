@@ -11,9 +11,6 @@ namespace BLL.Interface.Entities
         public BllProfile()
         {
             Friends = new HashSet<int>();
-            PostsId = new HashSet<int>();
-            FilesId = new HashSet<int>();
-            MessageId = new HashSet<int>();
         }
 
         public int Id { get; set; }
@@ -31,11 +28,5 @@ namespace BLL.Interface.Entities
         public string City { get; set; }
 
         public ICollection<int> Friends { get; set; }
-
-        public ICollection<int> PostsId { get; set; }
-
-        public ICollection<int> FilesId { get; set; }
-
-        public ICollection<int> MessageId { get; set; }
     }
 }

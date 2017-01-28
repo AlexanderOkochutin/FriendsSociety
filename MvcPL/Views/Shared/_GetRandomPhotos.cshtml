@@ -1,0 +1,21 @@
+﻿@model MvcPL.ViewModels.ProfileViewModel
+  @{
+      var r = new Random();
+      var photos = Model.GalleryId.ToArray();
+      var shownPhotos = new List<int>();
+      int max = (photos.Length <= 6) ? photos.Length : 6;
+      int i = 0;
+      while (i < max)
+      {
+          var temp = photos[r.Next(photos.Length)];
+          if (!shownPhotos.Contains(temp))
+          {
+              shownPhotos.Add(temp);
+              i++;
+          }
+      }
+      foreach (var friend in shownPhotos)
+      {
+            <img src="@Url.Action("GetGalleryImage", "Photo" , new { id=Model })" class="img-responsive" alt="I am" />
+      }
+  }

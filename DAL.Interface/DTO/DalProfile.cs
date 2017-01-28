@@ -8,9 +8,6 @@ namespace DAL.Interface.DTO
         public DalProfile()
         {
             Friends = new HashSet<int>();
-            PostsId = new HashSet<int>();
-            FilesId = new HashSet<int>();
-            MessageId = new HashSet<int>();
         }
 
         public int Id { get; set; }
@@ -29,10 +26,5 @@ namespace DAL.Interface.DTO
 
         public ICollection<int> Friends { get; set; }
 
-        public ICollection<int> PostsId { get; set; }
-
-        public ICollection<int> FilesId { get; set; }
-
-        public ICollection<int> MessageId { get; set; }
     }
 }

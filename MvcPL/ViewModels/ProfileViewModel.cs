@@ -11,9 +11,9 @@ namespace MvcPL.ViewModels
     {
         public ProfileViewModel()
         {
-            Friends = new HashSet<int>();
+            Friends = new List<int>();
             PostsId = new HashSet<int>();
-            FilesId = new HashSet<int>();
+            GalleryId = new HashSet<int>();
             MessageId = new HashSet<int>();
         }
 
@@ -47,11 +47,11 @@ namespace MvcPL.ViewModels
         [StringLength(128, ErrorMessage = "Max length - {0} symbols")]
         public string City { get; set; }
 
-        public ICollection<int> Friends { get; set; }
+        public IList<int> Friends { get; set; }
 
         public ICollection<int> PostsId { get; set; }
 
-        public ICollection<int> FilesId { get; set; }
+        public ICollection<int> GalleryId { get; set; }
 
         public ICollection<int> MessageId { get; set; }
 

@@ -35,8 +35,12 @@ namespace MvcPL.Controllers
 
         [Authorize]
         [Route("User", Name = "User")]
-        public ActionResult UserProfile(int id)
+        public ActionResult UserProfile(int id = 0)
         {
+            if (id == 0)
+            {
+                return RedirectToAction("Index");
+            }
             var user = userService.GetUserByEmail(HttpContext.User.Identity.Name);
             var profile = profileService.Get(id);
             if (user.Id == id)
@@ -78,8 +82,7 @@ namespace MvcPL.Controllers
                 var previousAvatar = fileService.GetAllFiles(model.Id).FirstOrDefault(p => p.Name == $"avatar{model.Id}");
                 if (previousAvatar != null)
                 {
-                    previousAvatar.Name = "galery";
-                    fileService.UpdateFile(previousAvatar);
+                    fileService.DeleteFile(previousAvatar);
                 }
                 photo.Name = $"avatar{model.Id}";                
                 photo.Data = new byte[fileUpload.ContentLength];

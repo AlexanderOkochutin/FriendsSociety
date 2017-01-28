@@ -16,5 +16,6 @@ namespace BLL.Interface.Services
         List<BllFile> GetAllFiles(int userId);
         BllFile GetFile(int key);
         BllFile GetByName(string name);
+        List<BllFile> GetAllGalleryFiles(int id);
     }
 }

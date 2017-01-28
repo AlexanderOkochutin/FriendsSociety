@@ -55,5 +55,10 @@ namespace BLL.Services
         {
             return unitOfWork.Files.GetByName(name).ToBllFile();
         }
+
+        public List<BllFile> GetAllGalleryFiles(int id)
+        {
+            return unitOfWork.Files.GetAllGalleryFiles(id).Map().ToList();
+        }
     }
 }

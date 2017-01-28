@@ -1,9 +1,11 @@
-﻿using DAL.Interface.DTO;
+﻿using System.Collections.Generic;
+using DAL.Interface.DTO;
 
 namespace DAL.Interface.Repository
 {
     public interface IFileRepository:IRepository<DalFile>
     {
         DalFile GetByName(string name);
+        IEnumerable<DalFile> GetAllGalleryFiles(int id);
     }
 }

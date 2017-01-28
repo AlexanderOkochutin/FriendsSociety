@@ -190,6 +190,7 @@
     <None Include="Views\Friend\ShowUserFriends.cshtml" />
     <Content Include="Content\Images\background.jpg" />
     <Content Include="Views\Profile\UserProfile.cshtml" />
+    <None Include="Views\Shared\_GetRandomPhotos.cshtml" />
     <Content Include="Views\Shared\_InviteSend.cshtml" />
     <Content Include="Views\Friend\Index.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
@@ -355,6 +356,7 @@
     <None Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_ProfilePhoto.cshtml" />
     <None Include="Views\Shared\_RegistrationPartial.cshtml" />
+    <None Include="Views\Shared\_ShowFriendsPartial.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

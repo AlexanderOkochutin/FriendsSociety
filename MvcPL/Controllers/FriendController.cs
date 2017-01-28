@@ -50,7 +50,7 @@ namespace MvcPL.Controllers
         }
 
         [Authorize]
-        public ActionResult ShowUserFriends(int id)
+        public ActionResult ShowUserFriends(int id = 0)
         {
             var user = userService.GetUserByEmail(HttpContext.User.Identity.Name);
             if (id == user.Id)

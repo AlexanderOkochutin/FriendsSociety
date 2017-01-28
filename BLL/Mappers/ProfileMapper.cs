@@ -16,9 +16,6 @@ namespace BLL.Mappers
             var bllProfile = new BllProfile()
             {
                Id = dalProfile.Id,
-               PostsId = dalProfile.PostsId,
-               FilesId = dalProfile.FilesId,
-               MessageId = dalProfile.MessageId,
                City = dalProfile.City,
                Gender = dalProfile.Gender,
                FirstName = dalProfile.FirstName,
@@ -36,9 +33,6 @@ namespace BLL.Mappers
             var dalProfile = new DalProfile()
             {
                 Id = bllProfile.Id,
-                PostsId = bllProfile.PostsId,
-                FilesId = bllProfile.FilesId,
-                MessageId = bllProfile.MessageId,
                 City = bllProfile.City,
                 Gender = bllProfile.Gender,
                 FirstName = bllProfile.FirstName,
