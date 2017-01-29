@@ -3,7 +3,6 @@ using BLL.Interface.Services;
 using BLL.Services;
 using CryptoService;
 using ICryptoService;
-using DAL;
 using DAL.Concrete;
 using DAL.Interface.Repository;
 using Ninject;

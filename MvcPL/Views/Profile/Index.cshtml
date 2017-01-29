@@ -106,9 +106,9 @@
         @Html.Partial("_GetRandomPhotos",Model)
     </div>
 
-        <hr/>
+    <hr/>
     <hr>
-    <div class="row">
+    <div id ="insert"class="row">
         <div class="col-sm-4"><img class="img-responsive" src="//placehold.it/220x180/777777/FFF"></div>
         <div class="col-sm-8">
             <h2>Large, Small or Tiny</h2><p>
@@ -130,4 +130,18 @@
     </div>
     <hr>
 </div>
+<div>
+<!--
+    <div class="fieldset">
+        <button id="submit">Save images</button>
+    </div>
+    <div id ="postContainer"></div>
+</div>
+<script type="text/javascript">
 
+    $('#submit').on('click', function (e) {
+        e.preventDefault();
+        $('#postContainer').append($('#insert'));
+    });
+</script>
+    -->

@@ -3,10 +3,12 @@
 @if (Model.Id == ViewBag.UserId)
 {
     <div>
-        <label class="btn btn-sm btn-default red"> Load Images
-            <input type="file" multiple="multiple" name="upload" id="uploadFile" style="display: none"/><br/>
+        <label class="btn btn-sm btn-default red">
+            Load Images
+            <input type="file" multiple="multiple" name="upload" id="uploadFile" style="display: none" /><br />
         </label>
-        <p/>
+        <p class="xxx"></p>
+        <p />
         <div class="fieldset">
             <button id="submit">Save images</button>
         </div>
@@ -16,8 +18,7 @@
 <div class="col-md-offset-1">
     @Html.Partial("_GetGallery",Model)
 </div>
-<script type="text/javascript">
-    
+<script type="text/javascript">  
     $('#submit').on('click', function (e) {
         e.preventDefault();
         var files = document.getElementById('uploadFile').files;
@@ -41,4 +42,13 @@
             }
         }
     });
+
+    $("#uploadFile").on("change", function (e) {
+        var files = document.getElementById('uploadFile').files;
+        if (files.length > 0) {
+            for (var i = 0; i < files.length; i++)
+                $(".xxx").append(files[i].name);
+        }
+    });
+
 </script>
