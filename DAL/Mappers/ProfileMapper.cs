@@ -6,15 +6,14 @@ using ORM.Entities;
 namespace DAL.Mappers
 {
     /// <summary>
-    /// Service class for mapping DalUser and ORM User entities
+    /// Service class for mapping DalProfile and ORM Profile entities
     /// </summary>
     public static class ProfileMapper
     {
         /// <summary>
-        /// Map User
+        /// Map To Profile
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns>new ORM User entity same as user</returns>
+        /// <returns>new ORM Profile entity same as dalProfile</returns>
         public static Profile ToProfile(this DalProfile profile)
         {
             if (ReferenceEquals(profile, null)) return null;
@@ -29,15 +28,13 @@ namespace DAL.Mappers
                 City = profile.City,
 
             };
-
             return result;
         }
 
         /// <summary>
-        /// Map User
+        /// Map To Dal Profiel
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns>new DalUser entity same as user</returns>
+        /// <returns>new DalProfile entity same as Profile</returns>
         public static DalProfile ToDalProfile(this Profile profile)
         {
             if (ReferenceEquals(profile, null)) return null;
@@ -56,10 +53,9 @@ namespace DAL.Mappers
         }
 
         /// <summary>
-        /// Map users
+        /// Map To DalProfiles
         /// </summary>
-        /// <param name="users"></param>
-        /// <returns>new DalUser collection same as users</returns>
+        /// <returns>new DalProfiles collection same as Profiles</returns>
         public static IEnumerable<DalProfile> Map(this IQueryable<Profile> profiles)
         {
             var dalProfiles = new List<DalProfile>();
@@ -70,6 +66,10 @@ namespace DAL.Mappers
             return dalProfiles;
         }
 
+        /// <summary>
+        /// Map Profiles
+        /// </summary>
+        /// <returns>new DalProfiles collection same as Profiles</returns>
         public static IEnumerable<DalProfile> Map(this IEnumerable<Profile> profiles)
         {
             var dalProfiles = new List<DalProfile>();

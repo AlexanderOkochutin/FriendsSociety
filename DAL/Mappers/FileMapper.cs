@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using DAL.Interface.DTO;
 using ORM.Entities;
@@ -7,17 +6,14 @@ using ORM.Entities;
 namespace DAL.Mappers
 {
     /// <summary>
-    /// Service class for mapping DalUser and ORM User entities
+    /// Service class for mapping DalFile and ORM File entities
     /// </summary>
     public static class FileMapper
-
-{
-
-/// <summary>
-        /// Map User
+    {
+        /// <summary>
+        /// Map To File
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns>new ORM User entity same as user</returns>
+        /// <returns>new ORM File entity same as DalFile</returns>
         public static File ToFile(this DalFile file)
         {
             if (ReferenceEquals(file, null)) return null;
@@ -29,15 +25,13 @@ namespace DAL.Mappers
                 MimeType = file.MimeType,
                 Name = file.Name
             };
-
             return result;
         }
 
         /// <summary>
-        /// Map User
+        /// Map To DAlFile
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns>new DalUser entity same as user</returns>
+        /// <returns>new DalFile entity same as File</returns>
         public static DalFile ToDalFile(this File file)
         {
             if (ReferenceEquals(file, null)) return null;
@@ -55,10 +49,9 @@ namespace DAL.Mappers
         }
 
         /// <summary>
-        /// Map users
+        /// Map To DalFiles
         /// </summary>
-        /// <param name="users"></param>
-        /// <returns>new DalUser collection same as users</returns>
+        /// <returns>new DalFile collection same as ORM files collection</returns>
         public static IEnumerable<DalFile> Map(this IQueryable<File> Files)
         {
             var dalFiles = new List<DalFile>();

@@ -6,8 +6,15 @@ using ORM.Entities;
 
 namespace DAL.Mappers
 {
+    /// <summary>
+    /// Service class for mapping DalPosts and ORM posts entities
+    /// </summary>
     public static class PostMapper
     {
+        /// <summary>
+        /// Map To Post
+        /// </summary>
+        /// <returns>new ORM Post entity same as dalPost</returns>
         public static Post ToPost(this DalPost dalPost)
         {
             if (ReferenceEquals(dalPost, null)) return null;
@@ -22,6 +29,10 @@ namespace DAL.Mappers
             return post;
         }
 
+        /// <summary>
+        /// Map To DalPost
+        /// </summary>
+        /// <returns>new ORM Post entity same as dalPost</returns>
         public static DalPost ToDalPost(this Post post)
         {
             if (ReferenceEquals(post, null)) return null;
@@ -43,6 +54,10 @@ namespace DAL.Mappers
             return dalPost;
         }
 
+        /// <summary>
+        /// Map To DalPosts
+        /// </summary>
+        /// <returns>new DalPosts collection  same as ORM posts collection</returns>
         public static IEnumerable<DalPost> Map(this IQueryable<Post> posts)
         {
             var dalPosts = new List<DalPost>();

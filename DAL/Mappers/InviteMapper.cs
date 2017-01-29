@@ -5,8 +5,15 @@ using ORM.Entities;
 
 namespace DAL.Mappers
 {
+    /// <summary>
+    /// Service for mapping DalInvite and ORM invite entities
+    /// </summary>
     public static class InviteMapper
     {
+        /// <summary>
+        /// Map To Invite
+        /// </summary>
+        /// <returns>new ORM inite entity same as dalInvite</returns>
         public static Invite ToInvite(this DalInvite dalInvite)
         {
             if (ReferenceEquals(dalInvite,null)) return null;
@@ -18,6 +25,10 @@ namespace DAL.Mappers
             return invite;
         }
 
+        /// <summary>
+        /// Map To DalInvite
+        /// </summary>
+        /// <returns>new DalInvite entity same as ORM Invite entity</returns>
         public static DalInvite ToDalInvite(this Invite invite)
         {
             if (ReferenceEquals(invite, null)) return null;
@@ -31,6 +42,10 @@ namespace DAL.Mappers
             return dalInvite;
         }
 
+        /// <summary>
+        /// Map To DalInvites
+        /// </summary>
+        /// <returns>new DalInvite Collection same as ORM Invite collection</returns>
         public static IEnumerable<DalInvite> Map(this IQueryable<Invite> invites)
         {
             var dalInvites = new List<DalInvite>();

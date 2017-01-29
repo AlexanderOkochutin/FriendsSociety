@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DAL.Interface.DTO;
-using ORM;
+using ORM.Entities;
 
 namespace DAL.Mappers
 {
@@ -11,9 +11,8 @@ namespace DAL.Mappers
     public static class UserMapper
     {
         /// <summary>
-        /// Map User
+        /// Mapr to User
         /// </summary>
-        /// <param name="user"></param>
         /// <returns>new ORM User entity same as user</returns>
         public static User ToUser(this DalUser user)
         {
@@ -27,14 +26,12 @@ namespace DAL.Mappers
                 IsEmailConfirmed = user.IsEmailConfirmed,
                 MailSalt = user.MailSalt
             };
-
             return result;
         }
 
         /// <summary>
-        /// Map User
+        /// Map To DAL User
         /// </summary>
-        /// <param name="user"></param>
         /// <returns>new DalUser entity same as user</returns>
         public static DalUser ToDalUser(this User user)
         {
@@ -48,19 +45,16 @@ namespace DAL.Mappers
                 IsEmailConfirmed = user.IsEmailConfirmed,
                 MailSalt = user.MailSalt
             };
-
             foreach (var role in user.Roles)
             {
                 result.Roles.Add(role.Name);
             }
-
             return result;
         }
 
         /// <summary>
-        /// Map users
+        /// Map ot DalUsers
         /// </summary>
-        /// <param name="users"></param>
         /// <returns>new DalUser collection same as users</returns>
         public static IEnumerable<DalUser> Map(this IQueryable<User> users)
         {

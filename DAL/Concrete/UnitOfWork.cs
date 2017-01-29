@@ -10,6 +10,9 @@ using ORM;
 
 namespace DAL.Concrete
 {
+    /// <summary>
+    /// Service class implements IUnitOfWork
+    /// </summary>
     public class UnitOfWork : IUnitOfWork
     {
         public DbContext Context { get; private set; }
@@ -21,6 +24,10 @@ namespace DAL.Concrete
         public IPostRepository Posts { get; set; }
         public ILikeRepository Likes { get; set; }
 
+        /// <summary>
+        /// Create UnitOfWork Instance
+        /// </summary>
+        /// <param name="context">Db context</param>
         public UnitOfWork(DbContext context)
         {
             Context = context;
@@ -33,16 +40,17 @@ namespace DAL.Concrete
             Likes = new LikeRepository((SocialNetworkContext) context);
         }
 
+        /// <summary>
+        /// Method for saving changes in db
+        /// </summary>
         public void  Commit()
         {
             Context?.SaveChanges();
         }
 
-        public async Task CommitAsync()
-        {
-          await Context?.SaveChangesAsync();
-        }
-
+        /// <summary>
+        /// Dispose context
+        /// </summary>
         public void Dispose()
         {
             Context?.Dispose();

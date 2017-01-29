@@ -5,13 +5,15 @@ using ORM.Entities;
 
 namespace DAL.Mappers
 {
+    /// <summary>
+    /// Service class for mapping DalMessage and ORM message entities
+    /// </summary>
     public static class MessageMapper
     {
         /// <summary>
-        /// Map User
+        /// Map To Message
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns>new ORM User entity same as user</returns>
+        /// <returns>new ORM Message entity same as dalMessage</returns>
         public static Message ToMessage(this DalMessage message)
         {
             if (ReferenceEquals(message, null)) return null;
@@ -22,15 +24,13 @@ namespace DAL.Mappers
                 Text = message.Text,
                 IsRead = message.IsRead,
             };
-
             return result;
         }
 
         /// <summary>
-        /// Map User
+        /// Map To DalMessage
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns>new DalUser entity same as user</returns>
+        /// <returns>new DalMessage entity same as ORM message</returns>
         public static DalMessage ToDalMessage(this Message message)
         {
             if (ReferenceEquals(message, null)) return null;
@@ -48,10 +48,9 @@ namespace DAL.Mappers
         }
 
         /// <summary>
-        /// Map users
+        /// Map To DalMessages
         /// </summary>
-        /// <param name="users"></param>
-        /// <returns>new DalUser collection same as users</returns>
+        /// <returns>new DalMessage collection same as ORM messages</returns>
         public static IEnumerable<DalMessage> Map(this IQueryable<Message> messages)
         {
             var dalMessages = new List<DalMessage>();

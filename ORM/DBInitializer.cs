@@ -13,7 +13,7 @@ namespace ORM
         private readonly IPasswordService passwordService;
 
         /// <summary>
-        /// Default constructor for initializer
+        /// constructor for initializer
         /// </summary>
         /// <param name="passwordService">service which implements IPassword service</param>
         public DbInitializer(IPasswordService passwordService)

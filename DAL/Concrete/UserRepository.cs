@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using DAL.Interface.DTO;
 using DAL.Interface.Repository;
 using DAL.Mappers;
@@ -14,7 +11,7 @@ using ORM.Entities;
 namespace DAL.Concrete
 {
     /// <summary>
-    /// User repository class implements Repository pattern for user collection
+    /// User repository class implements IUserRepository
     /// </summary>
     public class UserRepository : IUserRepository
     {
@@ -22,6 +19,10 @@ namespace DAL.Concrete
         private readonly DbSet<User> users;
         private readonly DbSet<Role> roles;
 
+        /// <summary>
+        /// Create new User Repositiry instance
+        /// </summary>
+        /// <param name="socialNetworkContext">context</param>
         public UserRepository(SocialNetworkContext socialNetworkContext)
         {
             context = socialNetworkContext;
@@ -29,6 +30,9 @@ namespace DAL.Concrete
             roles = context.Set<Role>();
         }
 
+        /// <summary>
+        /// Method for adding new user entity in collection
+        /// </summary>
         public void Add(DalUser dalUser)
         {
             var user = dalUser.ToUser();
@@ -42,6 +46,10 @@ namespace DAL.Concrete
             users.Add(user);
         }
 
+        /// <summary>
+        /// Method for update exist user
+        /// </summary>
+        /// <param name="dalUser">exist user</param>
         public void Update(DalUser dalUser)
         {
             var user = users.FirstOrDefault(u => u.Id == dalUser.Id);
@@ -58,28 +66,52 @@ namespace DAL.Concrete
                 }
                 context.Entry(user).State = EntityState.Modified;
             }
+            else
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
         }
 
+        /// <summary>
+        /// Delete by Id exist user
+        /// </summary>
+        /// <param name="id">Id of exist user</param>
         public void DeleteById(int id)
         {
-            users.Remove(users.FirstOrDefault(u => u.Id == id));
+            var user = users.FirstOrDefault(u => u.Id == id);
+            if (!ReferenceEquals(user, null))
+            {
+                users.Remove(user);
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
         }
 
+        /// <summary>
+        /// Get by Id exist user
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>DAlUser entity</returns>
         public DalUser GetById(int id)
         {
             return users.FirstOrDefault(u => u.Id == id).ToDalUser();
         }
 
+        /// <summary>
+        /// get all users 
+        /// </summary>
+        /// <returns>Dal user collection</returns>
         public IEnumerable<DalUser> GetAll()
         {
             return users.Include(u => u.Roles).Select(u => u).Map();
         }
 
-        public DalUser GetByPredicate(Expression<Func<DalUser, bool>> f)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Get user by contact email
+        /// </summary>
+        /// <returns>Dal user entity</returns>
         public DalUser GetByEmail(string email)
         {
             return users.FirstOrDefault(u => u.Email == email).ToDalUser();

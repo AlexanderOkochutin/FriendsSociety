@@ -12,7 +12,12 @@ using ORM;
 using ORM.Entities;
 
 namespace DAL.Concrete
-{
+{ 
+    #region Not use in current build
+
+    /// <summary>
+    /// Post Repository class implements IPostRepository
+    /// </summary>
     public class PostRepository : IPostRepository
     {
         private readonly SocialNetworkContext context;
@@ -22,6 +27,9 @@ namespace DAL.Concrete
         private readonly DbSet<File> files;
         private readonly DbSet<Message> messages;
 
+        /// <summary>
+        /// Create PostRepository Instance
+        /// </summary>
         public PostRepository(SocialNetworkContext context)
         {
             this.context = context;
@@ -32,6 +40,9 @@ namespace DAL.Concrete
             posts = context.Set<Post>();
         }
 
+        /// <summary>
+        /// Method for adding new Post
+        /// </summary>
         public void Add(DalPost entity)
         {
             var post = new Post()
@@ -42,18 +53,22 @@ namespace DAL.Concrete
                 IsOnTheWall = entity.IsOnTheWall,
                 Text = entity.Text
             };
+
             foreach (var comment in entity.Comments)
             {
                 post.Comments.Add(messages.FirstOrDefault(m=>m.Id==comment));
             }
+
             foreach (var file in entity.Files)
             {
                 post.Files.Add(files.FirstOrDefault(f=>f.Id==file));
             }
+
             foreach (var like in entity.Likes)
             {
                 post.Likes.Add(likes.FirstOrDefault(l=>l.Id == like.Id));
             }
+
             foreach (var profile in entity.RepostProfiles)
             {
                 post.RepostProfiles.Add(profiles.FirstOrDefault(p=>p.Id == profile));
@@ -62,55 +77,84 @@ namespace DAL.Concrete
             posts.Add(post);
         }
 
+        /// <summary>
+        /// Delete exist post by Id
+        /// </summary>
+        /// <param name="id">Id of exist post</param>
         public void DeleteById(int id)
         {
-            posts.Remove(posts.FirstOrDefault(p => p.Id == id));
+            var post = posts.FirstOrDefault(p => p.Id == id);
+            if (!ReferenceEquals(post, null))
+            {
+                posts.Remove(post);
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(post));
+            }
         }
 
+        /// <summary>
+        /// get All posts
+        /// </summary>
+        /// <returns>collection of all posts</returns>
         public IEnumerable<DalPost> GetAll()
         {
             return posts.Select(p => p).Map();
         }
 
+        /// <summary>
+        /// Get convrete post by Id
+        /// </summary>
+        /// <param name="id">Id of Concrete post</param>
+        /// <returns>concrete DalPost entity</returns>
         public DalPost GetById(int id)
         {
             return posts.FirstOrDefault(p => p.Id == id).ToDalPost();
         }
 
-        public DalPost GetByPredicate(Expression<Func<DalPost, bool>> f)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Method for updating exist post
+        /// </summary>
+        /// <param name="entity">exist post entity</param>
         public void Update(DalPost entity)
         {
             var post = posts.FirstOrDefault(p => p.Id == entity.Id);
-            post.Id = entity.Id;
-            post.Date = entity.Date;
-            post.AuthorId = entity.AuthorId;
-            post.IsOnTheWall = entity.IsOnTheWall;
-            post.Text = entity.Text;
-            post.Comments.Clear();
-            post.Files.Clear();
-            post.Likes.Clear();
-            post.RepostProfiles.Clear();
-            foreach (var comment in entity.Comments)
+            if (!ReferenceEquals(post, null))
             {
-                post.Comments.Add(messages.FirstOrDefault(m => m.Id == comment));
+                post.Id = entity.Id;
+                post.Date = entity.Date;
+                post.AuthorId = entity.AuthorId;
+                post.IsOnTheWall = entity.IsOnTheWall;
+                post.Text = entity.Text;
+                post.Comments.Clear();
+                post.Files.Clear();
+                post.Likes.Clear();
+                post.RepostProfiles.Clear();
+                foreach (var comment in entity.Comments)
+                {
+                    post.Comments.Add(messages.FirstOrDefault(m => m.Id == comment));
+                }
+                foreach (var file in entity.Files)
+                {
+                    post.Files.Add(files.FirstOrDefault(f => f.Id == file));
+                }
+                foreach (var like in entity.Likes)
+                {
+                    post.Likes.Add(likes.FirstOrDefault(l => l.Id == like.Id));
+                }
+                foreach (var profile in entity.RepostProfiles)
+                {
+                    post.RepostProfiles.Add(profiles.FirstOrDefault(p => p.Id == profile));
+                }
+                context.Entry(post).State = EntityState.Modified;
             }
-            foreach (var file in entity.Files)
+            else
             {
-                post.Files.Add(files.FirstOrDefault(f => f.Id == file));
+                throw new ArgumentNullException(nameof(post));
             }
-            foreach (var like in entity.Likes)
-            {
-                post.Likes.Add(likes.FirstOrDefault(l => l.Id == like.Id));
-            }
-            foreach (var profile in entity.RepostProfiles)
-            {
-                post.RepostProfiles.Add(profiles.FirstOrDefault(p => p.Id == profile));
-            }
-            context.Entry(post).State = EntityState.Modified;
         }
     }
+    #endregion
 }
+
