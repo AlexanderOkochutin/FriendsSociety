@@ -1,5 +1,4 @@
-﻿using System;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 using ICryptoService;
 
@@ -18,7 +17,6 @@ namespace CryptoService
         /// <summary>
         /// Method for getting random salt
         /// </summary>
-        /// <returns></returns>
         public string GetSalt()
         {
             var cryptoService = new RNGCryptoServiceProvider();
@@ -46,7 +44,6 @@ namespace CryptoService
         /// <param name="password">input password from authentication form</param>
         /// <param name="salt">salt from database for this user</param>
         /// <param name="hash">hash from database for this user</param>
-        /// <returns></returns>
         public bool VerifyPassword(string password, string salt, string hash)
         {
             return hash == GetHash(password, salt);
