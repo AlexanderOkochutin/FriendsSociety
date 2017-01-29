@@ -1,5 +1,5 @@
 ﻿@model MvcPL.ViewModels.LoginAndRegistrationModel 
- @using (Html.BeginRouteForm("Login"))
+ @using (Html.BeginForm("Login","Account"))
  {
      @Html.AntiForgeryToken()
      <div class="form-horizontal">
