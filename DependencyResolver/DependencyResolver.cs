@@ -12,6 +12,9 @@ using ORM;
 
 namespace DependencyResolver
 {
+    /// <summary>
+    /// Service class for DI and IoC implemetnation
+    /// </summary>
     public static class DependencyResolver
     {
         /// <summary>
