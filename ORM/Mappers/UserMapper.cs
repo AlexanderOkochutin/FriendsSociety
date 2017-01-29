@@ -4,9 +4,13 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ORM.Entities;
 
 namespace ORM.Mappers
 {
+    /// <summary>
+    /// Service class for configurating User table
+    /// </summary>
     public class UserMapper:EntityTypeConfiguration<User>
     {
         public UserMapper()

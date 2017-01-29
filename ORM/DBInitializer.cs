@@ -5,15 +5,26 @@ using ORM.Entities;
 
 namespace ORM
 {
+    /// <summary>
+    /// Service class for database initializing
+    /// </summary>
     public class DbInitializer:CreateDatabaseIfNotExists<SocialNetworkContext>
     {
         private readonly IPasswordService passwordService;
 
+        /// <summary>
+        /// Default constructor for initializer
+        /// </summary>
+        /// <param name="passwordService">service which implements IPassword service</param>
         public DbInitializer(IPasswordService passwordService)
         {
             this.passwordService = passwordService;
         }
 
+        /// <summary>
+        /// Method which creates all Roles, Administrator and test users.
+        /// </summary>
+        /// <param name="context"> context name </param>
         protected override void Seed(SocialNetworkContext context)
         {
             context.Roles.AddRange(new Role[]
