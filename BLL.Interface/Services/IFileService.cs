@@ -15,13 +15,6 @@ namespace BLL.Interface.Services
         void AddFile(BllFile file);
 
         /// <summary>
-        /// Method for adding avatar for exist profile
-        /// </summary>
-        /// <param name="file">avatar BllFile</param>
-        /// <param name="email">Email of exist BllProfile</param>
-        void AddAvatarToUser(BllFile file, string email);
-
-        /// <summary>
         /// Delete exist file
         /// </summary>
         /// <param name="file">exist BllFile</param>

@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using BLL.Interface.Entities;
 using DAL.Interface.DTO;
 
 namespace BLL.Mappers
 {
+    /// <summary>
+    /// Service class for mapping DalInvite and BllInvite Entities
+    /// </summary>
     public static class InviteMapper
     {
+        /// <summary>
+        /// Method map To BllInvite
+        /// </summary>
+        /// <returns>new BllInvite the same as DalInvite</returns>
         public static BllInvite ToBllInvite(this DalInvite dalInvite)
         {
             if (ReferenceEquals(dalInvite, null)) return null;
@@ -23,6 +26,10 @@ namespace BLL.Mappers
             return bllInvite;
         }
 
+        /// <summary>
+        /// Method map to DalInvite
+        /// </summary>
+        /// <returns>new DalInvite the same as BllInvite</returns>
         public static DalInvite ToDalInvite(this BllInvite bllInvite)
         {
             if (ReferenceEquals(bllInvite, null)) return null;
@@ -36,6 +43,10 @@ namespace BLL.Mappers
             return dalInvite;
         }
 
+        /// <summary>
+        /// Method map To BllInvites
+        /// </summary>
+        /// <returns>new BllInvites collection same as DalInvites collection</returns>
         public static IEnumerable<BllInvite> Map(this IEnumerable<DalInvite> dalInvites)
         {
             var bllInvites = new List<BllInvite>();

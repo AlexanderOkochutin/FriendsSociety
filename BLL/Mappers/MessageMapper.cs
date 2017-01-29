@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using BLL.Interface.Entities;
 using DAL.Interface.DTO;
 
 namespace BLL.Mappers
 {
+    /// <summary>
+    /// Service class for mapping DalMessage and BllMessage Entities
+    /// </summary>
     public static class MessageMapper
     {
+        /// <summary>
+        /// Method map To BllMessage
+        /// </summary>
+        /// <returns>new BllMessage the same as DalMessage</returns>
         public static BllMessage ToBllMessage(this DalMessage dalMessage)
         {
             if (ReferenceEquals(dalMessage, null)) return null;
@@ -26,6 +29,10 @@ namespace BLL.Mappers
             return bllMessage;
         }
 
+        /// <summary>
+        /// Method map to DalMessage
+        /// </summary>
+        /// <returns>new DalMessage the same as BllMessage</returns>
         public static DalMessage ToDalMessage(this BllMessage bllMessage)
         {
             if (ReferenceEquals(bllMessage, null)) return null;
@@ -42,6 +49,10 @@ namespace BLL.Mappers
             return dalMessage;
         }
 
+        /// <summary>
+        /// Method map To BllMessages
+        /// </summary>
+        /// <returns>new BllMessages collection same as DalMessages collection</returns>
         public static IEnumerable<BllMessage> Map(this IEnumerable<DalMessage> dalMessages)
         {
             var bllMessages = new List<BllMessage>();

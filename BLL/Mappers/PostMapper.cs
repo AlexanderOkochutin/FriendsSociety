@@ -1,15 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BLL.Interface.Entities;
 using DAL.Interface.DTO;
 
 namespace BLL.Mappers
 {
+    /// <summary>
+    /// Service class for mapping DalPost and BllPost Entities
+    /// </summary>
     public static class PostMapper
     {
+        /// <summary>
+        /// Method map To BllPost
+        /// </summary>
+        /// <returns>new BllPost the same as DalPost</returns>
         public static BllPost ToBllPost(this DalPost dalPost)
         {
             if (ReferenceEquals(dalPost, null)) return null;
@@ -28,6 +32,10 @@ namespace BLL.Mappers
             return bllPost;
         }
 
+        /// <summary>
+        /// Method map to DalPost
+        /// </summary>
+        /// <returns>new DalPost the same as BllPost</returns>
         public static DalPost ToDalPost(this BllPost bllPost)
         {
             if (ReferenceEquals(bllPost, null)) return null;
@@ -46,6 +54,10 @@ namespace BLL.Mappers
             return dalPost;
         }
 
+        /// <summary>
+        /// Method map To BllPosts
+        /// </summary>
+        /// <returns>new BllPosts collection same as DalPosts collection</returns>
         public static IEnumerable<BllPost> Map(this IEnumerable<DalPost> dalPosts)
         {
             var bllPosts = new List<BllPost>();

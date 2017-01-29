@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BLL.Interface.Services;
-using DAL.Interface.Repository;
+﻿using BLL.Interface.Services;
 
 namespace BLL.Services
 {
+    /// <summary>
+    /// Service for work with posts, implements IPostService
+    /// </summary>
     public class PostService:IPostService
     {
     }

@@ -8,8 +8,15 @@ using DAL.Interface.DTO;
 
 namespace BLL.Mappers
 {
+    /// <summary>
+    /// Service class for mapping DalUser and BllUser Entities
+    /// </summary>
     public static class UserMapper
     {
+        /// <summary>
+        /// Method map To BllUser
+        /// </summary>
+        /// <returns>new BllUser the same as DalUser</returns>
         public static BllUser ToBllUser(this DalUser dalUser)
         {
             if (ReferenceEquals(dalUser, null)) return null;
@@ -26,6 +33,10 @@ namespace BLL.Mappers
             return bllUser;
         }
 
+        /// <summary>
+        /// Method map to DalUser
+        /// </summary>
+        /// <returns>new DalUser the same as BllUser</returns>
         public static DalUser ToDalUser(this BllUser bllUser)
         {
             if (ReferenceEquals(bllUser, null)) return null;
@@ -42,6 +53,10 @@ namespace BLL.Mappers
             return dalUser;
         }
 
+        /// <summary>
+        /// Method map To BllUsers
+        /// </summary>
+        /// <returns>new BLLUsers collection same as DalUsers collection</returns>
         public static IEnumerable<BllUser> Map(this IEnumerable<DalUser> dalUsers)
         {
             var bllUsers = new List<BllUser>();

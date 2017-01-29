@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using BLL.Interface.Entities;
 using DAL.Interface.DTO;
 
 namespace BLL.Mappers
 {
+    /// <summary>
+    /// Service class for mapping DalLike and BllLike Entities
+    /// </summary>
     public static class LikeMapper
     {
+        /// <summary>
+        /// Method map To BllLike
+        /// </summary>
+        /// <returns>new BllLike the same as DalLike</returns>
         public static BllLike ToBllLike(this DalLike dalLike)
         {
             if (ReferenceEquals(dalLike, null)) return null;
@@ -22,6 +25,10 @@ namespace BLL.Mappers
             return bllLike;
         }
 
+        /// <summary>
+        /// Method map to DalLike
+        /// </summary>
+        /// <returns>new DalLike the same as BllLike</returns>
         public static DalLike ToDalLike(this BllLike bllLike)
         {
             if (ReferenceEquals(bllLike, null)) return null;
@@ -34,6 +41,10 @@ namespace BLL.Mappers
             return dalLike;
         }
 
+        /// <summary>
+        /// Method map To BllLikes
+        /// </summary>
+        /// <returns>new BllLikes collection same as DalLikes collection</returns>
         public static IEnumerable<BllLike> Map(this IEnumerable<DalLike> dalLikes)
         {
             var bllLikes = new List<BllLike>();
@@ -44,6 +55,10 @@ namespace BLL.Mappers
             return bllLikes;
         }
 
+        /// <summary>
+        /// Method map To DalLikes
+        /// </summary>
+        /// <returns>new DalLikes collection same as BllLikes collection</returns>
         public static IEnumerable<DalLike> Map(this IEnumerable<BllLike> bllLikes)
         {
             var dalLikes = new List<DalLike>();
