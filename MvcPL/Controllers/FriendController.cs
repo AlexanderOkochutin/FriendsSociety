@@ -12,6 +12,9 @@ using Ninject.Infrastructure.Language;
 
 namespace MvcPL.Controllers
 {
+    /// <summary>
+    /// Class for friends and invite logic
+    /// </summary>
     public class FriendController : Controller
     {
 
@@ -20,6 +23,9 @@ namespace MvcPL.Controllers
         private readonly IUserService userService;
         private readonly IInviteService inviteService;
 
+        /// <summary>
+        /// Create Friend controller
+        /// </summary>
         public FriendController(IProfileService ps, IFileService fs, IUserService us, IInviteService ins)
         {
             profileService = ps;
@@ -28,8 +34,11 @@ namespace MvcPL.Controllers
             inviteService = ins;
         }
 
-
-        // GET: Friend
+        /// <summary>
+        /// Returns Friend list and invites(if this friend page is your)
+        /// </summary>
+        [HttpGet]
+        [Authorize]
         public ActionResult Index(int page = 1)
         {
             var myProfile = profileService.GetByUserEmail(HttpContext.User.Identity.Name);
@@ -52,6 +61,9 @@ namespace MvcPL.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Show friends of profile (or friends and invites if profile is your)
+        /// </summary>
         [Authorize]
         public ActionResult ShowUserFriends(int id = 0)
         {
@@ -83,6 +95,9 @@ namespace MvcPL.Controllers
             }
         }
 
+        /// <summary>
+        /// Send invite method
+        /// </summary>
         [Authorize]
         public ActionResult SendInvite(int id)
         {
@@ -96,6 +111,9 @@ namespace MvcPL.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Accept friend invite, and stay on index page
+        /// </summary>
         [Authorize]
         public ActionResult Accept(int idFrom, int idTo)
         {
@@ -103,6 +121,9 @@ namespace MvcPL.Controllers
             return RedirectToAction("Index", "Friend");
         }
 
+        /// <summary>
+        /// Refuse friend invite and stay on index page
+        /// </summary>
         [Authorize]
         public ActionResult Refuse(int idFrom, int idTo)
         {
@@ -110,6 +131,9 @@ namespace MvcPL.Controllers
             return RedirectToAction("Index", "Friend");
         }
 
+        /// <summary>
+        /// Delete friend and stay on index page
+        /// </summary>
         [Authorize]
         public ActionResult DeleteFriend(int id1, int id2)
         {
@@ -117,6 +141,10 @@ namespace MvcPL.Controllers
             return RedirectToAction("Index", "Friend");
         }
 
+        /// <summary>
+        /// adding functionality for notifications
+        /// </summary>
+        /// <returns>number of new Invites</returns>
         public ActionResult NumOfInvites(int id)
         {
             var test = inviteService.GetAllInviteProfiles(id).Count();
