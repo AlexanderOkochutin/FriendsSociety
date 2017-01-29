@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using BLL.Interface.Services;
 using MvcPL.Infrastructure.Mappers;
 using MvcPL.ViewModels;
-using Ninject.Infrastructure.Language;
 
 namespace MvcPL.Controllers
 {

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using BLL.Interface.Services;
-using CryptoService;
-using ICryptoService;
 using MvcPL.Providers;
 using MvcPL.ViewModels;
 using Newtonsoft.Json.Linq;
