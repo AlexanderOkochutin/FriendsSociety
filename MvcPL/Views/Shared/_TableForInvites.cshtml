@@ -1,0 +1,66 @@
+﻿@model IList<MvcPL.ViewModels.ProfileViewModel>
+
+
+<table class="table col-md-5 table-hover">
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr>
+            <td class="col-xs-3">
+                <div style="padding-top: 10px">
+                    <a href="@Url.Action("UserProfile", "Profile" , new {id=Model[i].Id})">
+                        <div class="frame-round">
+                            <div class="crop">
+                                <img src="@Url.Action("GetImage", "Profile" , new {id=Model[i].Id})" alt="I am" class="img-circle" width="90" height="90" />
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </td>
+            <td class="td">
+                <dl class="dl-horizontal">
+                    <dt>
+                        Last Name:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model[i].LastName)
+                    </dd>
+                    <dt>
+                        First name:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model[i].FirstName)
+                    </dd>
+                    <dt>
+                        City:
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => Model[i].City)
+                    </dd>
+                </dl>
+            </td>
+            <td style="padding-top: 30px;">
+                @{
+                    if (!Model[i].IsYouSendInvite && !Model[i].IsYourFriend && !Model[i].IsYou)
+                    {
+                        <div id="@Model[i].Id-addf" align="left">
+                            @Ajax.ActionLink("Send Invite", "SendInvite", "Friend", new {id = Model[i].Id}, new AjaxOptions {UpdateTargetId = Model[i].Id.ToString() + "-addf", InsertionMode = InsertionMode.ReplaceWith}, htmlAttributes: new {@class = "btn btn-default btn-sm green"})
+                        </div>
+                    }
+                    else if (!Model[i].IsYourFriend && !Model[i].IsYou)
+                    {
+                        <button type="button" class="btn btn-default btn-sm" style="background: #00bc8c" disabled="disabled">Invite send</button>
+                    }
+                    else if (!Model[i].IsYou)
+                    {
+                        <p style="color: #00bc8c" align="left">Is your friend</p>
+                    }
+                    else
+                    {
+                        <p style="color: #00bc8c" align="left">Is you</p>
+                    }
+                }
+            </td>
+        </tr>
+    }
+</table>
+

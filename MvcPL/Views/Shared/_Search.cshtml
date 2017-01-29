@@ -29,65 +29,7 @@
     </div>
     if (!ReferenceEquals(Model, null))
     {
-    <table class="table col-md-5 table-hover">
-        @for (int i = 0; i < Model.Profiles.Entities.Count; i++)
-        {
-
-            <tr>
-                <td class="col-xs-3">
-                    <div style="padding-top: 10px">
-                        <a href="@Url.Action("UserProfile", "Profile", new {id = Model.Profiles.Entities[i].Id})">
-                            <div class="frame-round">
-                                <div class="crop">
-                                    <img src="@Url.Action("GetImage", "Profile", new {id = Model.Profiles.Entities[i].Id})" alt="I am" class="img-circle" width="90" height="90"/>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </td>
-                <td class="td">
-                    <dl class="dl-horizontal">
-                        <dt>
-                            Last Name:
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => Model.Profiles.Entities[i].LastName)
-                        </dd>
-                        <dt>
-                            First name:
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => Model.Profiles.Entities[i].FirstName)
-                        </dd>
-                        <dt>
-                            City:
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => Model.Profiles.Entities[i].City)
-                        </dd>
-                    </dl>
-                </td>
-                <td style="padding-top: 30px;">
-                    @{
-                        if (!Model.Profiles.Entities[i].IsYouSendInvite && !Model.Profiles.Entities[i].IsYourFriend)
-                        {
-                            <div id="@Model.Profiles.Entities[i].Id-addf" align="left">
-                                @Ajax.ActionLink("Send Invite", "SendInvite", "Friend", new {id = Model.Profiles.Entities[i].Id}, new AjaxOptions {UpdateTargetId = Model.Profiles.Entities[i].Id.ToString() + "-addf", InsertionMode = InsertionMode.ReplaceWith}, htmlAttributes: new {@class = "btn btn-default btn-sm green"})
-                            </div>
-                        }
-                        else if (!Model.Profiles.Entities[i].IsYourFriend)
-                        {
-                            <button type="button" class="btn btn-default btn-sm" style="background: #00bc8c" disabled="disabled">Invite send</button>
-                        }
-                        else
-                        {
-                            <p style="color: #00bc8c" align="left">Is your friend</p>
-                        }
-                    }
-                </td>
-            </tr>
-        }
-    </table>
+        @Html.Partial("_TableForInvites",Model.Profiles.Entities)
     <div class="btn-group">
         @Html.PageSubmit(Model.Profiles.Pagination)
     </div>
