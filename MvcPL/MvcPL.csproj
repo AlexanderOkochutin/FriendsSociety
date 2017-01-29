@@ -187,17 +187,22 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
+    <Compile Include="ViewModels\SendViewModel.cs" />
     <None Include="Views\Friend\ShowUserFriends.cshtml" />
+    <Content Include="Content\Images\about.png" />
     <Content Include="Content\Images\background.jpg" />
-    <Content Include="Views\Profile\UserProfile.cshtml" />
+    <Content Include="Scripts\chat.js" />
+    <Content Include="Scripts\notifications.js" />
+    <Content Include="Views\Shared\_GetGallery.cshtml" />
     <None Include="Views\Shared\_GetRandomPhotos.cshtml" />
+    <None Include="Views\Shared\_History.cshtml" />
     <Content Include="Views\Shared\_InviteSend.cshtml" />
     <Content Include="Views\Friend\Index.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
     <Content Include="Views\Photo\Index.cshtml" />
     <Content Include="Views\Account\About.cshtml" />
     <Content Include="Views\Shared\_Friends.cshtml" />
-    <Content Include="Views\Message\SendFromTo.cshtml" />
+    <Content Include="Views\Message\SendMessage.cshtml" />
     <None Include="Views\Shared\_Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -281,7 +286,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="Scripts\avatarChange.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -301,15 +305,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\LoginAndRegistration.js" />
-    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\profileEdi.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\skel.min.js" />
-    <Content Include="Scripts\util.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Templates\LoginAndRegistration\index.html" />
     <Content Include="Templates\LoginAndRegistration\index.js" />
@@ -337,6 +338,7 @@
     <Content Include="Templates\ProfileTemplate\images\pic08.jpg" />
     <Content Include="Templates\ProfileTemplate\index.html" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
+    <None Include="Views\Shared\_Photos.cshtml" />
     <Content Include="Views\Shared\_Profile.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Templates\ProfileTemplate\assets\fonts\fontawesome-webfont.eot" />

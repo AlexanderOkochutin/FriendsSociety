@@ -1,21 +1,47 @@
 ﻿@model MvcPL.ViewModels.ProfileViewModel
-  @{
-      var r = new Random();
-      var photos = Model.GalleryId.ToArray();
-      var shownPhotos = new List<int>();
-      int max = (photos.Length <= 6) ? photos.Length : 6;
-      int i = 0;
-      while (i < max)
-      {
-          var temp = photos[r.Next(photos.Length)];
-          if (!shownPhotos.Contains(temp))
-          {
-              shownPhotos.Add(temp);
-              i++;
-          }
-      }
-      foreach (var friend in shownPhotos)
-      {
-            <img src="@Url.Action("GetGalleryImage", "Photo" , new { id=Model })" class="img-responsive" alt="I am" />
-      }
-  }
+    <style>
+    .wrap
+{
+    width: 143px;
+    height: 143px;
+    overflow: hidden;
+    margin: 5px;
+    position: relative;
+}
+.img-mini {
+    position: absolute;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+    /* For the following settings we set 100%, but it can be higher if needed
+    See the answer's update */
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+}
+        </style>
+@{
+    var r = new Random();
+    var photos = Model.GalleryId.ToArray();
+    var shownPhotos = new List<int>();
+    int max = (photos.Length <= 4) ? photos.Length : 4;
+    int i = 0;
+    while (i < max)
+    {
+        var temp = photos[r.Next(photos.Length)];
+        if (!shownPhotos.Contains(temp))
+        {
+            shownPhotos.Add(temp);
+            i++;
+        }
+    }
+    <div class="col-md-12">
+        @foreach (var galeryId in shownPhotos)
+        {
+            <div class="col-md-3 wrap">
+                <img src="@Url.Action("GetGalleryImage", "Photo", new {id = galeryId})" class="img-responsive img-rounded img-mini" alt="I am" style="width: 100px"/>
+            </div>
+        }
+    </div>
+    }

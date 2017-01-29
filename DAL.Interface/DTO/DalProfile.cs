@@ -7,7 +7,7 @@ namespace DAL.Interface.DTO
     {
         public DalProfile()
         {
-            Friends = new HashSet<int>();
+            Friends = new List<int>();
         }
 
         public int Id { get; set; }
@@ -24,7 +24,8 @@ namespace DAL.Interface.DTO
 
         public string City { get; set; }
 
-        public ICollection<int> Friends { get; set; }
-
+        public IList<int> Friends { get; set; }
     }
+
 }
+

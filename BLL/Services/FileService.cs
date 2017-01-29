@@ -24,6 +24,12 @@ namespace BLL.Services
             throw new NotImplementedException();
         }
 
+        public async Task AddFileAsync(BllFile file)
+        {
+            unitOfWork.Files.Add(file.ToDalFile());
+            await unitOfWork.CommitAsync();
+        }
+
         public void AddFile(BllFile file)
         {
             unitOfWork.Files.Add(file.ToDalFile());

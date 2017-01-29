@@ -10,6 +10,7 @@ namespace BLL.Interface.Services
     public interface IFileService
     {
         void AddFile(BllFile file);
+        Task AddFileAsync(BllFile file);
         void AddAvatarToUser(BllFile file, string email);
         void DeleteFile(BllFile file);
         void UpdateFile(BllFile file);

@@ -41,7 +41,7 @@ namespace DAL.Mappers
                 Text = message.Text,
                 ProfileIdFrom = message.ProfileFrom.Id,
                 ProfileIdTo = message.ProfileTo.Id,
-                PostId = message.PostTo.Id,
+                PostId = message.PostTo?.Id??0,
                 IsRead = message.IsRead
             };
             return result;

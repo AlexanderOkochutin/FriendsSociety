@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using BLL.Interface.Services;
 using MvcPL.Infrastructure.Mappers;
@@ -27,10 +28,13 @@ namespace MvcPL.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var user = userService.GetUserByEmail(HttpContext.User.Identity.Name);
+            var user = userService.GetUserByEmail(HttpContext.User.Identity.Name);          
             if (user == null) return RedirectToAction("Login", "Account");
             var profile = profileService.Get(user.Id);
-            return View(profile.ToViewProfileModel());
+            var viewModel = profile.ToViewProfileModel();
+            viewModel.GalleryId = fileService.GetAllGalleryFiles(profile.Id).Select(g => g.Id).ToList();
+            ViewBag.UserId = user.Id;
+            return View(viewModel);
         }
 
         [Authorize]
@@ -42,14 +46,17 @@ namespace MvcPL.Controllers
                 return RedirectToAction("Index");
             }
             var user = userService.GetUserByEmail(HttpContext.User.Identity.Name);
+            ViewBag.UserId = user.Id;
             var profile = profileService.Get(id);
+            var viewModel = profile.ToViewProfileModel();
+            viewModel.GalleryId = fileService.GetAllGalleryFiles(profile.Id).Select(g => g.Id).ToList();
             if (user.Id == id)
             {
                 return RedirectToAction("Index");
             }
             else
             {
-                return View(profile.ToViewProfileModel());
+                return View("Index",viewModel);
             }
         }
 
@@ -57,8 +64,8 @@ namespace MvcPL.Controllers
         [HttpGet]
         public ActionResult Edit()
         {
-            var user = userService.GetUserByEmail(HttpContext.User.Identity.Name);
-            var profile = profileService.Get(user.Id);
+            var profile = profileService.GetByUserEmail(HttpContext.User.Identity.Name);
+            ViewBag.UserId = profile.Id;
             return View(profile.ToViewProfileModel());
         }
 
@@ -76,7 +83,9 @@ namespace MvcPL.Controllers
 
         private void SetProfileImage(ProfileViewModel model, HttpPostedFileBase fileUpload)
         {
-            var photo = new FileViewModel();            
+            var photo = new FileViewModel();
+            WebImage webImageResizer = new WebImage(fileUpload.InputStream);
+            webImageResizer.Resize(300, 300);            
             if (!ReferenceEquals(fileUpload, null))
             {
                 var previousAvatar = fileService.GetAllFiles(model.Id).FirstOrDefault(p => p.Name == $"avatar{model.Id}");
@@ -84,9 +93,8 @@ namespace MvcPL.Controllers
                 {
                     fileService.DeleteFile(previousAvatar);
                 }
+                photo.Data = webImageResizer.GetBytes();
                 photo.Name = $"avatar{model.Id}";                
-                photo.Data = new byte[fileUpload.ContentLength];
-                fileUpload.InputStream.Read(photo.Data, 0, fileUpload.ContentLength);
                 photo.MimeType = fileUpload.ContentType;
                 photo.Date = DateTime.Now;
                 photo.ProfileId = model.Id;

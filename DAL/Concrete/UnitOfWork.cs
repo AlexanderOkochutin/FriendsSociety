@@ -33,9 +33,14 @@ namespace DAL.Concrete
             Likes = new LikeRepository((SocialNetworkContext) context);
         }
 
-        public void Commit()
+        public void  Commit()
         {
             Context?.SaveChanges();
+        }
+
+        public async Task CommitAsync()
+        {
+          await Context?.SaveChangesAsync();
         }
 
         public void Dispose()

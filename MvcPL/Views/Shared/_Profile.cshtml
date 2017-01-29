@@ -66,7 +66,7 @@
                 @Html.ActionLink("F-SOCIETY", "Index", "Profile", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <ul class="nav navbar-nav pull-right">
-                <li><a href="@Url.Action("Index","Search")">Search</a></li>
+                <li><a href="@Url.Action("Index","Search",new {id = ViewBag.UserId})">Search</a></li>
                 <li><a href="@Url.Action("LogOut","Account")">Logout</a></li>
             </ul>
         </div>
@@ -79,8 +79,8 @@
             <div class="col-sm-2">
                 <ul id="sidebar" class="nav nav-stacked affix">
                     <li><a href="@Url.Action("Index","Profile")">My page</a></li>
-                    <li><a href="@Url.Action("Index","Message")">Messages</a></li>
-                    <li><a href="@Url.Action("Index","Friend")">Friends</a></li>
+                    <li><a href="@Url.Action("Index","Message",new {id = ViewBag.UserId})">Messages<span id="messageCount" style="color: darkmagenta; font-size: large"></span></a></li>
+                    <li><a href="@Url.Action("Index","Friend")">Friends<span id="inviteCount" style="color: darkmagenta; font-size: large"></span></a></li>
                     <li><a href="@Url.Action("Index","Photo")">Photo</a></li>
                     <li><a href="@Url.Action("About","Account")">About FS</a></li>
                 </ul>
@@ -89,5 +89,46 @@
         </div>
     </div>
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+    <script>
+    $(document).ready(function () {
+        Refresh1();
+        Refresh2();
+    });
+
+    function Refresh1() {
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("NumOfUnread","Message",new {id=ViewBag.UserId})',
+            contentType: false,
+            processData: false,
+            data: null,
+            success: function (data) {
+                if (data !== "  +0") {
+                    $("#messageCount").html(data);
+                } else {
+                    $("#messageCount").html('');
+                }
+            }
+        });
+        setTimeout("Refresh1();", 5000);
+    }
+        function Refresh2() {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("NumOfInvites","Friend",new {id=ViewBag.UserId})',
+                contentType: false,
+                processData: false,
+                data: null,
+                success: function (data) {
+                    if (data !== "  +0") {
+                        $("#inviteCount").html(data);
+                    } else {
+                        $("#inviteCount").html('');
+                    }
+                }
+            });
+            setTimeout("Refresh2();", 5000);
+        }
+    </script>
 </body>
 </html>

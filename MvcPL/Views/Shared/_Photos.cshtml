@@ -1,0 +1,44 @@
+﻿@model MvcPL.ViewModels.ProfileViewModel
+
+@if (Model.Id == ViewBag.UserId)
+{
+    <div>
+        <label class="btn btn-sm btn-default red"> Load Images
+            <input type="file" multiple="multiple" name="upload" id="uploadFile" style="display: none"/><br/>
+        </label>
+        <p/>
+        <div class="fieldset">
+            <button id="submit">Save images</button>
+        </div>
+    </div>
+    <hr/>
+}
+<div class="col-md-offset-1">
+    @Html.Partial("_GetGallery",Model)
+</div>
+<script type="text/javascript">
+    
+    $('#submit').on('click', function (e) {
+        e.preventDefault();
+        var files = document.getElementById('uploadFile').files;
+        if (files.length > 0) {
+            if (window.FormData !== undefined) {
+                var data = new FormData();
+                for (var x = 0; x < files.length; x++) {
+                    data.append("file" + x, files[x]);
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Upload", "Photo",new{id = Model.Id})',
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    error: function (xhr, status, p3) {
+                        alert(xhr.responseText);
+                    }
+                });
+            }
+        }
+    });
+</script>

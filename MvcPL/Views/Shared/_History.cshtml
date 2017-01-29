@@ -1,0 +1,74 @@
+﻿
+@model MvcPL.ViewModels.SendViewModel
+  @foreach (var m in Model.Messages)
+  {
+      if (m.ProfileIdFrom == Model.I.Id)
+      {
+          if (m.IsRead)
+          {
+              <div class="row img-rounded" style="background: grey ">
+                  <div class="mailfrom">
+                      <div class="col-md-2">
+                          <a href="@Url.Action("UserProfile", "Profile", new {id = Model.I.Id})">
+                              <div class="frame-round">
+                                  <div class="crop">
+                                      @Html.Partial("_ProfilePhoto", Model.I.Id);
+                                  </div>
+                              </div>
+                          </a>
+                      </div>
+                      <div class="col-md-10">
+                          <div align="left" style="word-wrap: break-word">
+                              @m.Text
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <p/>
+          }
+          else
+          {
+            <div class="row img-rounded" style="background: darkslategray">
+                <div class="mailfrom">
+                    <div class="col-md-2">
+                        <a href="@Url.Action("UserProfile", "Profile", new {id = Model.I.Id})">
+                            <div class="frame-round">
+                                <div class="crop">
+                                    @Html.Partial("_ProfilePhoto", Model.I.Id);
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-10">
+                        <div align="left" style="word-wrap: break-word">
+                            @m.Text
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p />
+          }
+      }
+      else
+      {
+          <div class="row img-rounded" style="background:grey ">
+              <div class="mailto">
+                  <div class="col-md-10">
+                      <div align="right"  style="word-wrap: break-word">
+                          @m.Text
+                      </div>
+                  </div>
+                  <div class="col-md-2" >
+                      <a href="@Url.Action("UserProfile", "Profile", new {id = Model.Companion.Id})">
+                          <div class="frame-round">
+                              <div class="crop">
+                                  @Html.Partial("_ProfilePhoto", Model.Companion.Id);
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+          </div>
+          <p/>
+      }
+  }

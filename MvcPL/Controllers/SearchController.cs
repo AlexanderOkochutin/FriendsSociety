@@ -24,8 +24,9 @@ namespace MvcPL.Controllers
             inviteService = ins;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+            ViewBag.UserId = id;
             return View();
         }
 
@@ -40,6 +41,7 @@ namespace MvcPL.Controllers
         {
             var bllProfiles = profileService.Find(model.StringKey, model.City);
             var searcherId = profileService.GetByUserEmail(HttpContext.User.Identity.Name).Id;
+            ViewBag.UserId = searcherId;
             bllProfiles = bllProfiles.Where(p => p.Id != searcherId);
             var result = bllProfiles.Map();
             model.Profiles = new GenericPaginationModel<ProfileViewModel>(page, 5, result.ToList());

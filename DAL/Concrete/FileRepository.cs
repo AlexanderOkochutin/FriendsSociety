@@ -28,6 +28,7 @@ namespace DAL.Concrete
             profiles = context.Set<Profile>();
         }
 
+
         public void Add(DalFile entity)
         {
             var file = entity.ToFile();

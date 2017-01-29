@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace DAL.Interface.Repository
 {
@@ -12,5 +13,6 @@ namespace DAL.Interface.Repository
         IPostRepository Posts { get; set; }
         ILikeRepository Likes { get; set; }
         void Commit();
+        Task CommitAsync();
     }
 }

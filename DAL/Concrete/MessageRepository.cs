@@ -60,15 +60,38 @@ namespace DAL.Concrete
 
         public void Update(DalMessage entity)
         {
-            throw new NotImplementedException();
+            var message = new Message()
+            {
+                Id = entity.Id,
+                Date = entity.Date,
+                PostTo = posts.FirstOrDefault(p=>p.Id==entity.PostId),
+                ProfileFrom = profiles.FirstOrDefault(p=>p.Id == entity.ProfileIdFrom),
+                ProfileTo = profiles.FirstOrDefault(p=>p.Id==entity.ProfileIdTo)
+            };
+            context.Entry(message).State = EntityState.Modified;
         }
 
         public List<DalMessage> GetMessages(int ProfileFrom, int ProfileTo)
         {
             return
-                messages.Where(m => (m.ProfileFrom.Id == ProfileFrom && m.ProfileTo.Id == ProfileTo) || (m.ProfileFrom.Id == ProfileTo && m.ProfileTo.Id == ProfileFrom))
+                messages.Where((m => (((m.ProfileFrom.Id == ProfileFrom && m.ProfileTo.Id == ProfileTo) 
+                || (m.ProfileFrom.Id == ProfileTo && m.ProfileTo.Id == ProfileFrom))
+                && (m.PostTo == null))))
+                    .Select(m=>m)
                     .OrderBy(m => m.Date)
                     .Map().ToList();
+        }
+
+        public void ReadMessage(int id)
+        {
+            var temp = messages.FirstOrDefault(m => m.Id == id);
+            temp.IsRead = true;
+            context.Entry(temp).State = EntityState.Modified;
+        }
+
+        public int NumberOfUnreadMessage(int idProfile)
+        {
+            return messages.Count(m => (m.ProfileTo.Id==idProfile)&&(m.PostTo == null) && (m.IsRead == false));
         }
     }
 }

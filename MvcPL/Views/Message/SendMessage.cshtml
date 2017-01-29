@@ -1,0 +1,38 @@
+﻿@model MvcPL.ViewModels.SendViewModel
+@{
+    Layout = "~/Views/Shared/_Profile.cshtml";
+}
+<div class="col-md-8 col-md-offset-1">
+    <div align="center">
+        <div class="row topMargin" style="padding-left: 125px">
+            <div class="col-md-8" align="center">
+                <div id="ProfileTo" hidden="hidden">@Model.Companion.Id.ToString()</div>
+                <div id="ProfileFrom" hidden="hidden">@Model.I.Id.ToString()</div>
+                <div id="RefreshArea">
+                    @{
+                        Html.RenderPartial("_History", Model);
+                    }
+                </div>
+                <div class="row" style="height: 150px">
+                </div>
+                @Ajax.ActionLink("ActionLink", "SendMessage","Message", new { id = 0, chatMessage = "" },
+                    new AjaxOptions { UpdateTargetId = "RefreshArea", OnSuccess = "ChatOnSuccess", OnFailure = "ChatOnFailure" },
+                    new { @id = "ActionLink", @style = "visibility:hidden;" })
+            </div>
+        </div>
+        <div class="row">
+                            <div id="inputForm" class="navbar-fixed-bottom" style="padding-left: 100px">
+                    <div class="well" style="width: 500px; margin-bottom: 0;">
+                        <div>
+                            <textarea id="txtMessage" rows="4"></textarea>
+                        </div>
+                        <div class="fieldset">
+                            <button id="btnMessage" value="Отправить" class="green" style="width: 300px">Send</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/chat.js")

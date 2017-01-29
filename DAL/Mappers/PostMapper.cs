@@ -33,21 +33,12 @@ namespace DAL.Mappers
                 IsOnTheWall = post.IsOnTheWall,
                 Text = post.Text,
             };
-            foreach (var file in post.Files)
-            {
-                dalPost.Files.Add(file.Id);
-            }
+            dalPost.Files = post.Files.Select(f => f.Id).ToList();
+            dalPost.Comments = post.Comments.Select(c => c.Id).ToList();
+            dalPost.RepostProfiles = post.RepostProfiles.Select(p => p.Id).ToList();
             foreach (var like in post.Likes)
             {
                 dalPost.Likes.Add(like.ToDalLike());
-            }
-            foreach (var comment in post.Comments)
-            {
-                dalPost.Comments.Add(comment.Id);
-            }
-            foreach (var repostProfile in post.RepostProfiles)
-            {
-                dalPost.RepostProfiles.Add(repostProfile.Id);
             }
             return dalPost;
         }

@@ -12,9 +12,8 @@ namespace MvcPL.ViewModels
         public ProfileViewModel()
         {
             Friends = new List<int>();
-            PostsId = new HashSet<int>();
-            GalleryId = new HashSet<int>();
-            MessageId = new HashSet<int>();
+            PostsId = new List<int>();
+            GalleryId = new List<int>();
         }
 
         [HiddenInput(DisplayValue = false)]
@@ -49,11 +48,9 @@ namespace MvcPL.ViewModels
 
         public IList<int> Friends { get; set; }
 
-        public ICollection<int> PostsId { get; set; }
+        public IList<int> PostsId { get; set; }
 
-        public ICollection<int> GalleryId { get; set; }
-
-        public ICollection<int> MessageId { get; set; }
+        public IList<int> GalleryId { get; set; }
 
         public bool IsYourFriend { get; set; }
 

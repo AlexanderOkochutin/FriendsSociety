@@ -10,7 +10,7 @@ namespace BLL.Interface.Entities
     {
         public BllProfile()
         {
-            Friends = new HashSet<int>();
+            Friends = new List<int>();
         }
 
         public int Id { get; set; }
@@ -27,6 +27,6 @@ namespace BLL.Interface.Entities
 
         public string City { get; set; }
 
-        public ICollection<int> Friends { get; set; }
+        public IList<int> Friends { get; set; }
     }
 }

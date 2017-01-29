@@ -8,7 +8,7 @@
         <div class="col-md-12 well">
             @if (Model.Friends.Count == 0 && Model.FriendsInvites.Entities.Count == 0)
             {
-                <h2>Now you have no friends, use <a href="@Url.Action("Index", "Search")">search!</a>
+                <h2>Now you have no friends, use <a href="@Url.Action("Index", "Search", new {id = ViewBag.UserId})">search!</a>
                 </h2>
             }
             @if (Model.FriendsInvites.Entities.Count > 0)
@@ -116,7 +116,7 @@
                         </td>
                         <td style="padding-top: 30px">
                             <div align="left">
-                                @Html.ActionLink("Message","SendFromTo","Message",new {idFrom = Model.UserId, idTo = friend.Id},htmlAttributes: new {@class= "btn btn-default btn-sm green" })
+                                @Html.ActionLink("Message","SendMessage","Message",new {id = friend.Id},htmlAttributes: new {@class= "btn btn-default btn-sm green" })
                             </div>
                         </td>
                         <td style="padding-top: 30px">

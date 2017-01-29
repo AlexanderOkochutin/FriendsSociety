@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using BLL.Interface.Services;
@@ -31,6 +33,7 @@ namespace MvcPL.Controllers
         public ActionResult Index(int page = 1)
         {
             var myProfile = profileService.GetByUserEmail(HttpContext.User.Identity.Name);
+            ViewBag.UserId = myProfile.Id;
             var viewModel = new FriendsViewModel();
             viewModel.UserId = myProfile.Id;
             if (myProfile.Friends != null)
@@ -41,18 +44,19 @@ namespace MvcPL.Controllers
                 }
             }
             var temp = inviteService.GetAllInviteProfiles(myProfile.Id).Map();
-            viewModel.FriendsInvites = new GenericPaginationModel<ProfileViewModel>(page,2,temp.ToList());
+            viewModel.FriendsInvites = new GenericPaginationModel<ProfileViewModel>(page, 2, temp.ToList());
             if (Request.IsAjaxRequest())
             {
-                return PartialView("_Friends",viewModel);
+                return PartialView("_Friends", viewModel);
             }
-            return View(viewModel);           
+            return View(viewModel);
         }
 
         [Authorize]
         public ActionResult ShowUserFriends(int id = 0)
         {
             var user = userService.GetUserByEmail(HttpContext.User.Identity.Name);
+            ViewBag.UserId = user.Id;
             if (id == user.Id)
             {
                 return RedirectToAction("Index");
@@ -70,7 +74,7 @@ namespace MvcPL.Controllers
                 }
                 if (Request.IsAjaxRequest())
                 {
-                    return View("ShowUserFriends",result.ToList());
+                    return View("ShowUserFriends", result.ToList());
                 }
                 else
                 {
@@ -83,6 +87,7 @@ namespace MvcPL.Controllers
         public ActionResult SendInvite(int id)
         {
             var user = userService.GetUserByEmail(HttpContext.User.Identity.Name);
+            ViewBag.UserId = user.Id;
             inviteService.SendInvite(user.Id, id);
             if (Request.IsAjaxRequest())
             {
@@ -92,24 +97,30 @@ namespace MvcPL.Controllers
         }
 
         [Authorize]
-        public ActionResult Accept(int idFrom,int idTo)
+        public ActionResult Accept(int idFrom, int idTo)
         {
-            inviteService.AddFriend(idFrom,idTo);
-            return RedirectToAction("Index","Friend");
+            inviteService.AddFriend(idFrom, idTo);
+            return RedirectToAction("Index", "Friend");
         }
 
         [Authorize]
-        public ActionResult Refuse(int idFrom,int idTo)
+        public ActionResult Refuse(int idFrom, int idTo)
         {
-            inviteService.RefuseInvite(idFrom,idTo);
+            inviteService.RefuseInvite(idFrom, idTo);
             return RedirectToAction("Index", "Friend");
         }
 
         [Authorize]
         public ActionResult DeleteFriend(int id1, int id2)
         {
-            inviteService.DeleteFriend(id1,id2);
+            inviteService.DeleteFriend(id1, id2);
             return RedirectToAction("Index", "Friend");
+        }
+
+        public ActionResult NumOfInvites(int id)
+        {
+            var test = inviteService.GetAllInviteProfiles(id).Count();
+            return Content($"  +{test}");
         }
     }
 }

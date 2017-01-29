@@ -26,7 +26,8 @@ namespace DAL.Mappers
                 LastName = profile.LastName,
                 Gender = profile.Gender,
                 RelationStatus = profile.RelationStatus,
-                City = profile.City
+                City = profile.City,
+
             };
 
             return result;
@@ -50,11 +51,7 @@ namespace DAL.Mappers
                 RelationStatus = profile.RelationStatus,
                 City = profile.City             
             };
-
-            foreach (var friend in profile.Friends)
-            {
-                result.Friends.Add(friend.Id);
-            }        
+            result.Friends = profile.Friends.Select(p => p.Id).ToList();
             return result;
         }
 
