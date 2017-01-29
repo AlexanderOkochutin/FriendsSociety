@@ -78,7 +78,6 @@
         <div class="row">
             <div class="col-sm-2">
                 <ul id="sidebar" class="nav nav-stacked affix">
-                    <li>@ViewBag.UserId</li>
                     <li><a href="@Url.Action("Index", "Profile")">My page</a></li>
                     <li><a href="@Url.Action("Index", "Message", new {id = ViewBag.UserId})">Messages<span id="messageCount" style="color: darkmagenta; font-size: large"></span></a></li>
                     <li><a href="@Url.Action("Index", "Friend")">Friends<span id="inviteCount" style="color: darkmagenta; font-size: large"></span></a></li>

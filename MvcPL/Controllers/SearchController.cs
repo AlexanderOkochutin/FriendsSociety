@@ -9,6 +9,9 @@ using MvcPL.ViewModels;
 
 namespace MvcPL.Controllers
 {
+    /// <summary>
+    /// Class for search logic
+    /// </summary>
     public class SearchController : Controller
     {
 
@@ -17,6 +20,9 @@ namespace MvcPL.Controllers
         private readonly IFileService fileService;
         private readonly IInviteService inviteService;
 
+        /// <summary>
+        /// Create Search controller instance
+        /// </summary>
         public SearchController(IProfileService ps, IFileService fs, IInviteService ins)
         {
             profileService = ps;
@@ -24,6 +30,9 @@ namespace MvcPL.Controllers
             inviteService = ins;
         }
 
+        /// <summary>
+        /// Return search page
+        /// </summary>
         public ActionResult Index(int id)
         {
             ViewBag.UserId = id;
@@ -33,9 +42,6 @@ namespace MvcPL.Controllers
         /// <summary>
         /// Consists logic for user searsh
         /// </summary>
-        /// <param name="model"></param>
-        /// <param name="page"></param>
-        /// <returns></returns>
         [HttpPost]
         public ActionResult Index(SearchViewModel model, int page = 1)
         {
@@ -63,8 +69,6 @@ namespace MvcPL.Controllers
         /// <summary>
         /// Returns json autocomplete help
         /// </summary>
-        /// <param name="term"></param>
-        /// <returns></returns>
         public ActionResult FindProfiles(string term)
         {
             var mvcProfiles = profileService.Find(term).Select(p => p.FirstName + " " + p.LastName);

@@ -10,6 +10,9 @@ using MvcPL.ViewModels;
 
 namespace MvcPL.Controllers
 {
+    /// <summary>
+    ///  Class for Profile logic on website
+    /// </summary>
     public class ProfileController : Controller
     {
         private readonly IProfileService profileService;
@@ -17,6 +20,9 @@ namespace MvcPL.Controllers
         private readonly IUserService userService;
         private readonly IInviteService inviteService;
 
+        /// <summary>
+        /// Create Profiel Conteroller instance
+        /// </summary>
         public ProfileController(IProfileService ps, IFileService fs, IUserService us,IInviteService ins)
         {
             profileService = ps;
@@ -25,6 +31,9 @@ namespace MvcPL.Controllers
             inviteService = ins;
         }
 
+        /// <summary>
+        /// Start page of profile
+        /// </summary>
         [Authorize]
         public ActionResult Index()
         {
@@ -37,8 +46,10 @@ namespace MvcPL.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Show page of another profile or redirect to your page
+        /// </summary>
         [Authorize]
-        [Route("User", Name = "User")]
         public ActionResult UserProfile(int id = 0)
         {
             if (id == 0)
@@ -60,6 +71,9 @@ namespace MvcPL.Controllers
             }
         }
 
+        /// <summary>
+        /// page of editing profile info
+        /// </summary>
         [Authorize]
         [HttpGet]
         public ActionResult Edit()
@@ -69,6 +83,9 @@ namespace MvcPL.Controllers
             return View(profile.ToViewProfileModel());
         }
 
+        /// <summary>
+        /// Edit post method and return to homepage
+        /// </summary>
         [Authorize]
         [HttpPost]
         public ActionResult Edit(ProfileViewModel model, HttpPostedFileBase fileUpload)
@@ -81,6 +98,9 @@ namespace MvcPL.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Set avatar image to the profile
+        /// </summary>
         private void SetProfileImage(ProfileViewModel model, HttpPostedFileBase fileUpload)
         {
             var photo = new FileViewModel();
@@ -103,10 +123,12 @@ namespace MvcPL.Controllers
             }
         }
 
-        [AllowAnonymous]
+        /// <summary>
+        /// return image pf profile with Id
+        /// </summary>
+        [Authorize]
         public FileContentResult GetImage(int id)
         {
-            
             var profile = profileService.Get(id);
             if (profile != null)
             {
@@ -124,6 +146,9 @@ namespace MvcPL.Controllers
             return null;
         }
 
+        /// <summary>
+        /// return standart image
+        /// </summary>
         private FileContentResult StandartImage()
         {
             string path = System.Web.HttpContext.Current.Server.MapPath("~/Content/Images/default-avatar.jpg");

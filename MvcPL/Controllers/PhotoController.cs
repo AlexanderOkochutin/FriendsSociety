@@ -39,6 +39,10 @@ namespace MvcPL.Controllers
             ViewBag.UserId = profileService.GetByUserEmail(HttpContext.User.Identity.Name).Id;
             var viewModel = profile.ToViewProfileModel();
             viewModel.GalleryId = fileService.GetAllGalleryFiles(profile.Id).Select(g => g.Id).ToList();
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Photos",viewModel);
+            }
             return View(viewModel);
         }
 
@@ -94,7 +98,7 @@ namespace MvcPL.Controllers
                       AddPhoto(upload, id);
                 }
             }
-            return RedirectToAction("Index", "Photo", id);
+            return RedirectToAction("Index", "Photo", new {id = id});
         }
     }
 }

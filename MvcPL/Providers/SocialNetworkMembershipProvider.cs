@@ -10,6 +10,9 @@ using MvcPL.ViewModels;
 
 namespace MvcPL.Providers
 {
+    /// <summary>
+    ///  class - custom mewmbership provider
+    /// </summary>
     public class SocialNetworkMembershipProvider : MembershipProvider
     {
         public IPasswordService PasswordService
@@ -21,7 +24,12 @@ namespace MvcPL.Providers
         public IProfileService ProfileService
             => (IProfileService) System.Web.Mvc.DependencyResolver.Current.GetService(typeof(IProfileService));
 
-        public MembershipUser CreateUser(RegistrationViewModel viewModel)//string email, string password
+        /// <summary>
+        /// Method for creating new user
+        /// </summary>
+        /// <param name="viewModel">model from registration form</param>
+        /// <returns>membership user wich was created</returns>
+        public MembershipUser CreateUser(RegistrationViewModel viewModel)
         {
             MembershipUser membershipUser = GetUser(viewModel.Email, false);
 
@@ -51,18 +59,23 @@ namespace MvcPL.Providers
             return membershipUser;
         }
 
+        /// <summary>
+        /// Verify input password and mail of user 
+        /// </summary>
         public override bool ValidateUser(string email, string password)
         {
             var user = UserService.GetUserByEmail(email);
 
             if (user != null && PasswordService.VerifyPassword(password, user.PasswordSalt, user.Password))
-            //Определяет, соответствуют ли заданный хэш RFC 2898 и пароль друг другу
             {
                 return true;
             }
             return false;
         }
 
+        /// <summary>
+        /// Method for getting user by email
+        /// </summary>
         public override MembershipUser GetUser(string email, bool userIsOnline)
         {
             var user = UserService.GetUserByEmail(email);

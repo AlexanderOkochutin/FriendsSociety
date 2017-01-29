@@ -7,14 +7,15 @@ using MvcPL.ViewModels;
 
 namespace MvcPL.Infrastructure.Mappers
 {
-
+    /// <summary>
+    /// Class for mapping Profile view model and BllProfile
+    /// </summary>
     public static class ProfileMapper
     {
         /// <summary>
-        /// Map User
+        /// Map To Profile View Model
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns>new BllUser same as user</returns>
+        /// <returns>Return Profile view Model same as BllProfile</returns>
         public static ProfileViewModel ToViewProfileModel(this BllProfile profile)
         {
             if (ReferenceEquals(profile, null)) return null;
@@ -33,10 +34,9 @@ namespace MvcPL.Infrastructure.Mappers
         }
 
         /// <summary>
-        /// Map User
+        /// Map to BllProfile
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns>new DalUser same as user</returns>
+        /// <returns>Bllprofile same as ProfileViewModel</returns>
         public static BllProfile ToBllProfile(this ProfileViewModel profile)
         {
             if (ReferenceEquals(profile, null)) return null;
@@ -55,10 +55,9 @@ namespace MvcPL.Infrastructure.Mappers
         }
 
         /// <summary>
-        /// Map Users
+        /// Map To ProfileViewModels
         /// </summary>
-        /// <param name="users"></param>
-        /// <returns>new BllUsers collection same as users</returns>
+        /// <returns>Collection of ProfileViewModels same as BllProfiles</returns>
         public static IEnumerable<ProfileViewModel> Map(this IEnumerable<BllProfile> profiles)
         {
             var Profiles = new List<ProfileViewModel>();

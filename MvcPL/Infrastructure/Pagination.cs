@@ -27,10 +27,7 @@ namespace MvcPL.Infrastructure
         /// <summary>
         /// Pages count
         /// </summary>
-        public int TotalPages
-        {
-            get { return (int)Math.Ceiling((decimal)TotalItems / PageSize); }
-        }
+        public int TotalPages => (int)Math.Ceiling((decimal)TotalItems / PageSize);
     }
 
     /// <summary>

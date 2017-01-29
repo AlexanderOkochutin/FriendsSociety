@@ -7,13 +7,16 @@ using MvcPL.ViewModels;
 
 namespace MvcPL.Infrastructure.Mappers
 {
+    /// <summary>
+    /// Class for mapping  BllFile and FileViewModel
+    /// </summary>
     public static class FileMapper
     {
+        
         /// <summary>
-        /// Map User
+        /// Map To FileView model
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns>new BllUser same as user</returns>
+        /// <returns> FileViewModel same as BllFil</returns>
         public static FileViewModel ToFileViewModel(this BllFile File)
         {
             if (ReferenceEquals(File, null)) return null;
@@ -31,10 +34,9 @@ namespace MvcPL.Infrastructure.Mappers
         }
 
         /// <summary>
-        /// Map User
+        /// Map To BllFile
         /// </summary>
-        /// <param name="user"></param>
-        /// <returns>new DalUser same as user</returns>
+        /// <returns>BllFile Same as FileViewModel</returns>
         public static BllFile ToBllFile(this FileViewModel File)
         {
             if (ReferenceEquals(File, null)) return null;
@@ -52,10 +54,9 @@ namespace MvcPL.Infrastructure.Mappers
         }
 
         /// <summary>
-        /// Map Users
+        /// Map to FileViewModels
         /// </summary>
-        /// <param name="users"></param>
-        /// <returns>new BllUsers collection same as users</returns>
+        /// <returns>Collection of FileViewModel same as collection of BllFiles</returns>
         public static IEnumerable<FileViewModel> Map(IEnumerable<BllFile> Files)
         {
             var bllFiles = new List<FileViewModel>();

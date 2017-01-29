@@ -7,6 +7,7 @@ using BLL.Interface.Services;
 
 namespace MvcPL.Providers
 {
+    #region Not use in current build
     public class SocialNetworkRoleProvider : RoleProvider
     {
         public IUserService UserService
@@ -87,4 +88,5 @@ namespace MvcPL.Providers
 
         #endregion
     }
+    #endregion
 }
