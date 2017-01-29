@@ -12,20 +12,29 @@ using MvcPL.ViewModels;
 
 namespace MvcPL.Controllers
 {
+    /// <summary>
+    /// Class for photo logic, upload and showing gallery image
+    /// </summary>
     public class PhotoController : Controller
     {
 
         private readonly IProfileService profileService;
         private readonly IFileService fileService;
 
+        /// <summary>
+        /// Create Photo Controller
+        /// </summary>
         public PhotoController(IProfileService ps, IFileService fs)
         {
             profileService = ps;
             fileService = fs;
         }
 
-        // GET: Photo
+        /// <summary>
+        /// Show all galllery image of profile with Id
+        /// </summary>
         [HttpGet]
+        [Authorize]
         public ActionResult Index(int id = 0)
         {
             
@@ -36,12 +45,9 @@ namespace MvcPL.Controllers
             return View(viewModel);
         }
 
-        [HttpPost]
-        public ActionResult Index(int id,string s)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// return image with Id
+        /// </summary>
         [Authorize]
         public FileContentResult GetGalleryImage(int id)
         {
@@ -56,10 +62,12 @@ namespace MvcPL.Controllers
                 }
         }
 
+        /// <summary>
+        /// logic of adding photo to gallery
+        /// </summary>
         [Authorize]
         public void AddPhoto(HttpPostedFileBase fileUpload,int id)
-        {
-             
+        {     
             var photo = new FileViewModel();
             WebImage webImageResizer = new WebImage(fileUpload.InputStream);
             webImageResizer.Resize(300, 300);
@@ -75,6 +83,9 @@ namespace MvcPL.Controllers
             }
         }
 
+        /// <summary>
+        /// Method for multipile adding photo
+        /// </summary>
         [HttpPost]
         public  ActionResult Upload(int id)
         {
@@ -88,7 +99,5 @@ namespace MvcPL.Controllers
             }
             return RedirectToAction("Index", "Photo", id);
         }
-
-
     }
 }
