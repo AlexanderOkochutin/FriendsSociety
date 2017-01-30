@@ -198,6 +198,7 @@
     <Content Include="Content\Images\404-tri.png" />
     <Content Include="Content\Images\500.png" />
     <Compile Include="Infrastructure\Filters\CustomFilter.cs" />
+    <Content Include="Content\TextArea.css" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="NLog.config">
