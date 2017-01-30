@@ -12,3 +12,6 @@
 
 2017-01-30 07:19:19.7387|ERROR|Log.Logger|Значение не может быть неопределенным.
 Имя параметра: source
+2017-01-30 11:31:15.4795|ERROR|Log.Logger|The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.ActionResult SendMessage(Int32, System.String)' in 'MvcPL.Controllers.MessageController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Имя параметра: parameters
+2017-01-30 11:32:21.4371|ERROR|Log.Logger|The provided anti-forgery token was meant for user "", but the current user is "okochutinwork@gmail.com".

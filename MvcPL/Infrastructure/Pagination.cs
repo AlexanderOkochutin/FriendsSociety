@@ -24,6 +24,7 @@ namespace MvcPL.Infrastructure
         /// Items count
         /// </summary>
         public int TotalItems { get; set; }
+
         /// <summary>
         /// Pages count
         /// </summary>

@@ -2,6 +2,7 @@
 @{
     Layout = "~/Views/Shared/_Profile.cshtml";
 }
+<link href="~/Content/TextArea.css" rel="stylesheet">
 <div class="col-md-8 col-md-offset-1">
     <div align="center">
         <div class="row topMargin" style="padding-left: 125px">
@@ -23,11 +24,11 @@
         <div class="row">
                             <div id="inputForm" class="navbar-fixed-bottom" style="padding-left: 100px">
                     <div class="well" style="width: 500px; margin-bottom: 0;">
-                        <div>
-                            <textarea id="txtMessage" rows="4"></textarea>
+                        <div align="center" style="padding-right: 50px">
+                            <textarea rows="5" placeholder="Write message!" name="comment[text]" id="txtMessage" cols="40"  class="table-bordered" style="border-color: #00bc8c"></textarea>
                         </div>
                         <div class="fieldset">
-                            <button id="btnMessage" value="Отправить" class="green" style="width: 300px">Send</button>
+                            <button id="btnMessage" value="Отправить" class="green" style="width: 300px" >Send</button>
                         </div>
                     </div>
                 </div>
