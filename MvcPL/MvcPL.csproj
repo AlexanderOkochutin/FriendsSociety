@@ -97,6 +97,10 @@
       <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.1\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -165,7 +169,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ErrorsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FriendController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
@@ -193,8 +197,15 @@
     <Content Include="Content\Images\404-raz.png" />
     <Content Include="Content\Images\404-tri.png" />
     <Content Include="Content\Images\500.png" />
-    <Content Include="Views\Errors\NotFound.cshtml" />
-    <Content Include="Views\Errors\Error.cshtml" />
+    <Compile Include="Infrastructure\Filters\CustomFilter.cs" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Views\Friend\ShowUserFriends.cshtml" />
     <Content Include="Content\Images\about.png" />
     <Content Include="Content\Images\background.jpg" />
@@ -408,6 +419,14 @@
     <ProjectReference Include="..\ICryptoService\ICryptoService.csproj">
       <Project>{a85d8d9e-cf83-4445-bdd2-7dbc20e76629}</Project>
       <Name>ICryptoService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Log.Interface\Log.Interface.csproj">
+      <Project>{46d6b350-f53c-43ed-b790-d94575a60d9b}</Project>
+      <Name>Log.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Log\Log.csproj">
+      <Project>{f3c1e154-1f04-4c48-b1db-2237a3e8d932}</Project>
+      <Name>Log</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

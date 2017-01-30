@@ -4,6 +4,7 @@ using System.Net.Mail;
 using System.Web.Mvc;
 using System.Web.Security;
 using BLL.Interface.Services;
+using MvcPL.Infrastructure.Filters;
 using MvcPL.Providers;
 using MvcPL.ViewModels;
 using Newtonsoft.Json.Linq;

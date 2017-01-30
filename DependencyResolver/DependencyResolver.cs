@@ -5,6 +5,8 @@ using CryptoService;
 using ICryptoService;
 using DAL.Concrete;
 using DAL.Interface.Repository;
+using Log;
+using Log.Interface;
 using Ninject;
 using Ninject.Web.Common;
 using ORM;
@@ -29,6 +31,9 @@ namespace DependencyResolver
         {
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             kernel.Bind<DbContext>().To<SocialNetworkContext>().InRequestScope();
+
+            kernel.Bind<ILogger>().To<Logger>();
+
             kernel.Bind<IUserRepository>().To<UserRepository>();
             kernel.Bind<IProfileRepository>().To<ProfileRepository>();
             kernel.Bind<IFileRepository>().To<FileRepository>();
@@ -36,6 +41,7 @@ namespace DependencyResolver
             kernel.Bind<IMessageRepository>().To<MessageRepository>();
             kernel.Bind<ILikeRepository>().To<LikeRepository>();
             kernel.Bind<IInviteRepository>().To<InviteRepository>();
+
             kernel.Bind<IPasswordService>().To<PasswordService>();
             kernel.Bind<IUserService>().To<UserService>();
             kernel.Bind<IProfileService>().To<ProfileService>();

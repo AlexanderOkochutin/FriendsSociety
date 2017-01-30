@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using BLL.Interface.Services;
+using MvcPL.Infrastructure.Filters;
 using MvcPL.Infrastructure.Mappers;
 using MvcPL.ViewModels;
 
@@ -52,6 +53,7 @@ namespace MvcPL.Controllers
         [Authorize]
         public ActionResult UserProfile(int id = 0)
         {
+            
             if (id == 0)
             {
                 return RedirectToAction("Index");

@@ -101,9 +101,11 @@
                         <div class="col-md-3">
                             <label class="btn btn-sm btn-default red">
                                 Avatar change
-                                <input type="file" name="FileUpload" style="display: none"/><br/>
-                            </label>
+                                <input type="file" id="avatarUpload" name="FileUpload" style="display: none"/><br/>
+                            </label>                        
                         </div>
+                        <div id="avatarName" class="col-md-6">
+                        </div>   
                     </div>
                     <div class="row" align="center">
                         <div class="col-md-6 col-md-offset-3">
@@ -120,4 +122,13 @@
     </div>
 </div>
 <script src="~/Scripts/profileEdi.js" type="text/javascript"></script>
-
+<script>
+    $("#avatarUpload").on("change",
+        function(e) {
+            var files = document.getElementById('avatarUpload').files;
+            if (files.length > 0) {
+                for (var i = 0; i < files.length; i++)
+                    $("#avatarName").append(files[i].name);
+            }
+        });
+</script>

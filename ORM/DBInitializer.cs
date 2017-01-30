@@ -58,7 +58,7 @@ namespace ORM
            context.Set<User>().Add(adminUser);
             context.SaveChanges();
 
-            for (int i = 2; i < 7; i++)
+            for (int i = 2; i < 15; i++)
             {
                 User user = new User()
                 {
