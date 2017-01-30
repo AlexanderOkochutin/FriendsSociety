@@ -105,11 +105,11 @@ namespace MvcPL.Controllers
         /// </summary>
         private void SetProfileImage(ProfileViewModel model, HttpPostedFileBase fileUpload)
         {
-            var photo = new FileViewModel();
-            WebImage webImageResizer = new WebImage(fileUpload.InputStream);
-            webImageResizer.Resize(300, 300);            
+            var photo = new FileViewModel();         
             if (!ReferenceEquals(fileUpload, null))
             {
+                WebImage webImageResizer = new WebImage(fileUpload.InputStream);
+                webImageResizer.Resize(300, 300);
                 var previousAvatar = fileService.GetAllFiles(model.Id).FirstOrDefault(p => p.Name == $"avatar{model.Id}");
                 if (previousAvatar != null)
                 {

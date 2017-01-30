@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BLL.Interface.Entities;
 using BLL.Interface.Services;
@@ -43,6 +44,11 @@ namespace BLL.Services
         {
             var temp = unitOfWork.Messages.GetMessages(UserFrom, UserTo);
             return temp.Map().ToList();
+        }
+
+        public bool IsUnreadMessageFromProfile(int id)
+        {
+            return unitOfWork.Messages.IsUnreadMessageFromProfile(id);
         }
 
         /// <summary>

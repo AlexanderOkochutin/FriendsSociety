@@ -144,7 +144,7 @@ namespace DAL.Concrete
                 {
                     post.RepostProfiles.Add(profiles.FirstOrDefault(p => p.Id == profile));
                 }
-                context.Entry(post).State = EntityState.Modified;
+               // context.Entry(post).State = EntityState.Modified;
             }
             else
             {

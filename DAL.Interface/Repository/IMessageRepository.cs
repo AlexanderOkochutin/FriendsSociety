@@ -26,5 +26,7 @@ namespace DAL.Interface.Repository
         /// </summary>
         /// <param name="id">Id of message</param>
         void ReadMessage(int id);
+
+        bool IsUnreadMessageFromProfile(int id);
     }
 }

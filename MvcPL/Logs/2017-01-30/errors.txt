@@ -2,3 +2,13 @@
 2017-01-30 03:59:06.4768|ERROR|Log.Logger|Ссылка на объект не указывает на экземпляр объекта.
 2017-01-30 03:59:54.7118|ERROR|Log.Logger|Ссылка на объект не указывает на экземпляр объекта.
 2017-01-30 04:01:42.3589|ERROR|Log.Logger|Ссылка на объект не указывает на экземпляр объекта.
+2017-01-30 06:52:59.5112|ERROR|Log.Logger|Ссылка на объект не указывает на экземпляр объекта.
+2017-01-30 06:53:11.4962|ERROR|Log.Logger|Ссылка на объект не указывает на экземпляр объекта.
+2017-01-30 06:53:12.6025|ERROR|Log.Logger|Ссылка на объект не указывает на экземпляр объекта.
+2017-01-30 06:53:44.9890|ERROR|Log.Logger|Ссылка на объект не указывает на экземпляр объекта.
+2017-01-30 07:16:51.3219|ERROR|Log.Logger|The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.ActionResult Index(Int32)' in 'MvcPL.Controllers.MessageController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Имя параметра: parameters
+2017-01-30 07:18:09.1055|ERROR|Log.Logger|Unexpected "if" keyword after "@" character.  Once inside code, you do not need to prefix constructs like "if" with "@".
+
+2017-01-30 07:19:19.7387|ERROR|Log.Logger|Значение не может быть неопределенным.
+Имя параметра: source

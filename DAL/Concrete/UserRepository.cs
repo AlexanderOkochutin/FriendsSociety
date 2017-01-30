@@ -64,7 +64,7 @@ namespace DAL.Concrete
                     var userRole = roles.FirstOrDefault(r => r.Name == item);
                     user.Roles.Add(userRole);
                 }
-                context.Entry(user).State = EntityState.Modified;
+               // context.Entry(user).State = EntityState.Modified;
             }
             else
             {

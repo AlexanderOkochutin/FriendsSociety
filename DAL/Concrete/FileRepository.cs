@@ -95,7 +95,7 @@ namespace DAL.Concrete
                 file.Date = entity.Date;
                 file.Name = entity.Name;
                 file.MimeType = entity.MimeType;
-                context.Entry(file).State = EntityState.Modified;
+               // context.Entry(file).State = EntityState.Modified;
             }
             else
             {

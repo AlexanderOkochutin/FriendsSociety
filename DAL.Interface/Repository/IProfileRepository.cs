@@ -19,5 +19,7 @@ namespace DAL.Interface.Repository
         /// </summary>
         /// <param name="id">profile Id</param>
         IEnumerable<DalProfile> GetAllFriendsOfId(int id);
+
+        IEnumerable<DalProfile> GetAllDialogProfiles(int id);
     }
 }

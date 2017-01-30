@@ -1,3 +1,9 @@
-﻿@{
+﻿@model IEnumerable<MvcPL.ViewModels.ProfileViewModel>
+@{
     Layout = "~/Views/Shared/_Profile.cshtml";
 }
+<div class="col-md-5 col-md-offset-2">
+    <div align="center">
+        @Html.Partial("_Dialogs", Model)
+    </div>
+</div>

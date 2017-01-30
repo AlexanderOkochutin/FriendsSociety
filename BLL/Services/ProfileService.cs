@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BLL.Interface.Entities;
 using BLL.Interface.Services;
@@ -87,6 +88,11 @@ namespace BLL.Services
         {
             var friends = unitOfWork.Profiles.GetAllFriendsOfId(id);
             return friends.Map();
+        }
+
+        public IEnumerable<BllProfile> GetAllDialogProfiles(int id)
+        {
+            return unitOfWork.Profiles.GetAllDialogProfiles(id).Map();
         }
     }
 }

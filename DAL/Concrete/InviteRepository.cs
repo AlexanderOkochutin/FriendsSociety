@@ -93,7 +93,7 @@ namespace DAL.Concrete
                 invite.ProfileFrom = profiles.FirstOrDefault(p => p.Id == entity.ProfileFrom);
                 invite.Response = entity.Response;
                 invite.ProfielTo = profiles.FirstOrDefault(p => p.Id == entity.ProfileTo);
-                context.Entry(invite).State = EntityState.Modified;
+                //context.Entry(invite).State = EntityState.Modified;
             }
             else
             {

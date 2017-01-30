@@ -58,5 +58,7 @@ namespace MvcPL.ViewModels
 
         public bool IsYou { get; set; }
 
+        public bool IsUnreadMessage { get; set; }
+
     }
 }

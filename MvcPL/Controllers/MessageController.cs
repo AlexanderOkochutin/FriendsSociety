@@ -34,7 +34,13 @@ namespace MvcPL.Controllers
         public ActionResult Index(int id)
         {
             ViewBag.UserId = id;
-            return View();
+            var dialogProfiles = profileService.GetAllDialogProfiles(id);
+            var profilesModel = dialogProfiles.Map();
+            foreach (var profile in profilesModel)
+            {
+                profile.IsUnreadMessage = messageService.IsUnreadMessageFromProfile(profile.Id);
+            }
+            return View(profilesModel);
         }
 
         /// <summary>

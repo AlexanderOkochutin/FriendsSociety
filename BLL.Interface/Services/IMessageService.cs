@@ -34,5 +34,7 @@ namespace BLL.Interface.Services
         /// <param name="idProfile">Id of exist Profile</param>
         /// <returns>number of unread message</returns>
         int NumsOfUnreadMessage(int idProfile);
+
+        bool IsUnreadMessageFromProfile(int id);
     }
 }

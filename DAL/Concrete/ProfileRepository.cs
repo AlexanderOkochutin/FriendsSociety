@@ -104,7 +104,7 @@ namespace DAL.Concrete
                     var temp = Profiles.FirstOrDefault(p => p.Id == id);
                     profile.Friends.Add(temp);
                 }
-                context.Entry(profile).State = EntityState.Modified;
+                //context.Entry(profile).State = EntityState.Modified;
             }
             else
             {
@@ -141,6 +141,12 @@ namespace DAL.Concrete
             {
                 throw new ArgumentNullException(nameof(profile));
             }
+        }
+
+        public IEnumerable<DalProfile> GetAllDialogProfiles(int id)
+        {
+            var profiles = Messages.Where(m => m.ProfileTo.Id == id).Select(m => m.ProfileFrom).Distinct();
+            return profiles.Map();
         }
     }
 }

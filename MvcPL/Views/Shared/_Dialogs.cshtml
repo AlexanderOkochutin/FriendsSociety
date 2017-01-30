@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MvcPL.ViewModels.ProfileViewModel>
+
+        @if (Model.Count() > 0)
+        {
+            <h2>Your Dialogs</h2>
+            <hr/>
+        }
+        else
+        {
+            <h2>Now you have no dialogs, but you can <a href="@Url.Action("Index", "Friend", new {id = ViewBag.UserId})">start new!</a></h2>
+            <hr />
+        }
+
+    @foreach (var profile in Model)
+    {
+        if (profile.IsUnreadMessage)
+        {
+            <div class="row img-rounded" style="background: darkslategray">
+                <div class="mailfrom">
+                    <div class="col-md-2">
+                        <a href="@Url.Action("UserProfile", "Profile", new {id = profile.Id})">
+                            <div class="frame-round">
+                                <div class="crop">
+                                    <img src="@Url.Action("GetImage", "Profile", new {id = profile.Id})" alt="I am" class="img-circle" width="90" height="90" />
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-10">
+                        <div align="right" style="padding-top: 13px">
+                            @Html.ActionLink("Message", "SendMessage", "Message", new { id = profile.Id }, htmlAttributes: new { @class = "btn btn-default btn-sm green" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p/>
+        }
+        else
+        {
+            <div class="row img-rounded" style="background: grey">
+                <div class="mailfrom">
+                    <div class="col-md-2">
+                        <a href="@Url.Action("UserProfile", "Profile", new {id = profile.Id})">
+                            <div class="frame-round">
+                                <div class="crop">
+                                    <img src="@Url.Action("GetImage", "Profile", new {id = profile.Id})" alt="I am" class="img-circle" width="90" height="90" />
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-10">
+                        <div align="right" style="padding-top: 13px">
+                            @Html.ActionLink("Message", "SendMessage", "Message", new { id = profile.Id }, htmlAttributes: new { @class = "btn btn-default btn-sm green" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p />
+        }
+    }
+
+
+                     

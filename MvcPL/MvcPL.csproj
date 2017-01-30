@@ -213,6 +213,7 @@
     <Content Include="Scripts\chat.js" />
     <Content Include="Scripts\notifications.js" />
     <Content Include="Views\Shared\_GetGallery.cshtml" />
+    <Content Include="Views\Shared\_Dialogs.cshtml" />
     <None Include="Views\Shared\_GetRandomPhotos.cshtml" />
     <None Include="Views\Shared\_History.cshtml" />
     <Content Include="Views\Shared\_InviteSend.cshtml" />

@@ -47,5 +47,7 @@ namespace BLL.Interface.Services
         /// <param name="id">Id of exist profile</param>
         /// <returns>Collection of BllProfiles</returns>
         IEnumerable<BllProfile> GetAllFriendsOfId(int id);
+
+        IEnumerable<BllProfile> GetAllDialogProfiles(int id);
     }
 }

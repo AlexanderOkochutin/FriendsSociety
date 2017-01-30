@@ -138,7 +138,7 @@ namespace DAL.Concrete
             {
                 throw new ArgumentNullException(nameof(temp));
             }           
-            context.Entry(temp).State = EntityState.Modified;
+           // context.Entry(temp).State = EntityState.Modified;
         }
 
         /// <summary>
@@ -149,6 +149,11 @@ namespace DAL.Concrete
         public int NumberOfUnreadMessage(int idProfile)
         {
             return messages.Count(m => (m.ProfileTo.Id==idProfile)&&(m.PostTo == null) && (m.IsRead == false));
+        }
+
+        public bool IsUnreadMessageFromProfile(int id)
+        {
+            return messages.Any(m => m.ProfileFrom.Id == id && m.IsRead == false);
         }
     }
 }

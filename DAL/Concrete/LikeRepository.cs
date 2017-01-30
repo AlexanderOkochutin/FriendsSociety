@@ -94,7 +94,7 @@ namespace DAL.Concrete
                 like.Id = entity.Id;
                 like.Post = posts.FirstOrDefault(p => p.Id == entity.PostId);
                 like.ProfileFrom = profiles.FirstOrDefault(p => p.Id == entity.ProfileFromId);
-                context.Entry(like).State = EntityState.Modified;
+                //context.Entry(like).State = EntityState.Modified;
             }
             else
             {
